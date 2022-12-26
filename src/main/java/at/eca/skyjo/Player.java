@@ -39,4 +39,20 @@ public class Player {
     public int getScore() {
         return score;
     }
+
+    public String scoreToString(){
+        int values =  0;
+        int notvisible = 0;
+
+        for (int i = 0; i<hand.size(); i++){
+            Card tocheck = hand.get(i);
+
+            if (!tocheck.isFaceUp()){
+                notvisible = notvisible + 1;
+            } else {
+                values = values + tocheck.getValue();
+            }
+        }
+        return "" + values + " Points + " + notvisible + " not visible.";
+    }
 }

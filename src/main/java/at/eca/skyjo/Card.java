@@ -17,6 +17,9 @@ public class Card {
         this.faceUp = !this.faceUp;
     }
 
+    public boolean isFaceUp(){
+        return faceUp;
+    }
     public int getValue() {
         return this.value;
     }
