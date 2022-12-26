@@ -5,7 +5,7 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-group 'at.eca.skyjoapp'
+group 'at.eca.skyjo'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'at.eca.skyjoapp.skyjogameeca'
-    mainClass = 'at.eca.skyjoapp.skyjogameeca.HelloApplication'
+    mainModule = 'at.eca.skyjo'
+    mainClass = 'at.eca.skyjo.SkyjoGameMain'
 }
 
 javafx {

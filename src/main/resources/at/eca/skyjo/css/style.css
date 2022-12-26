@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color: #D9E7CB;
+    -fx-font-family: "JetBrainsMonoNL Nerd Font Mono";
+    -fx-font-size: 16;
+}
+
+.button {
+    -fx-padding: 10 16;
+    -fx-background-radius: 50;
+    -fx-background-color: #6989d57D;
+
+}
+
+#headingOne {
+    -fx-font-weight: bold;
+    -fx-font-size: 24;
+}
+
+#choiceBox {
+    -fx-padding: 2 5;
+    -fx-background-radius: 50;
+    -fx-background-color: #6989d57D;
+}

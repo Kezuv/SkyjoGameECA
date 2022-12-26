@@ -1,4 +1,4 @@
-module at.eca.skyjoapp.skyjogameeca {
+module at.eca.skyjo {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,6 @@ module at.eca.skyjoapp.skyjogameeca {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens at.eca.skyjoapp.skyjogameeca to javafx.fxml;
-    exports at.eca.skyjoapp.skyjogameeca;
+    opens at.eca.skyjo to javafx.fxml;
+    exports at.eca.skyjo;
 }
