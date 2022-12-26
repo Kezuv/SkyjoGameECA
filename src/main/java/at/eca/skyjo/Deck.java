@@ -40,4 +40,8 @@ public class Deck {
             System.out.println(card);
         }
     }
+
+    public int getSize(){
+        return cards.size();
+    }
 }
