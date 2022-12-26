@@ -22,4 +22,21 @@ public class Player {
             hand.add(card);
         }
     }
+
+
+    public void swapCard(Card card, int place, TrayDeck tray) {
+
+        Card swapped = hand.get(place);
+        hand.set(place, card);
+        tray.addCardtoTray(swapped);
+
+    }
+
+    public void addToScore(int value) {
+        score += value;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
