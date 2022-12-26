@@ -41,6 +41,10 @@ public class Deck {
         }
     }
 
+    public Card getDeckCard() {
+        return cards.get(0);
+    }
+
     public int getSize(){
         return cards.size();
     }

@@ -55,17 +55,6 @@ public class SkyjoGameMain extends Application {
         */
 
 
-        Deck deckOne = new Deck();
-        Game game = new Game();
-        Player John = new Player("John", deckOne);
-        Player Doe = new Player("Doe", deckOne);
-        game.addPlayer(John);
-        game.addPlayer(Doe);
-
-        game.start();
-
-
-
         launch();
 
 

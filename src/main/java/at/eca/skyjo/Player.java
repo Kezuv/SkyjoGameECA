@@ -30,7 +30,7 @@ public class Player {
         hand.set(place, card);
         tray.addCardtoTray(swapped);
 
-        threeofakind(tray);
+        threeOfAKind(tray);
     }
 
     public void addToScore(int value) {
@@ -57,7 +57,25 @@ public class Player {
         return "" + values + " Points + " + notvisible + " not visible.";
     }
 
-    public void threeofakind(TrayDeck tray){
+    public boolean checkIfFinished(){
+        int checkBoolean = 0;
+        for (int i = 0; i < hand.size(); i++){
+            if (!hand.get(i).isFaceUp()){
+                checkBoolean ++;
+            }
+        }
+        if (checkBoolean!=0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Card getCard (int cardPosition){
+        return hand.get(cardPosition);
+    }
+
+    public void threeOfAKind(TrayDeck tray){
         if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
                 (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())){
 

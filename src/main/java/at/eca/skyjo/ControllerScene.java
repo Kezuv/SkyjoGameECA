@@ -21,6 +21,7 @@ public class ControllerScene implements Initializable {
     private String viewTwoPlayer = "/at/eca/skyjo/fxml/sceneTwoPlayer.fxml";
     private String viewThreePlayer = "/at/eca/skyjo/fxml/sceneThreePlayer.fxml";
     private String viewFourPlayer = "/at/eca/skyjo/fxml/sceneFourPlayer.fxml";
+    private Game game;
 
 
     @FXML

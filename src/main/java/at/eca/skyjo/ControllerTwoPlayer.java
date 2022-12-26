@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class ControllerTwoPlayer implements Initializable {
     private String viewStart = "/at/eca/skyjo/fxml/sceneStart.fxml";
+    private Game gameForTwo = new Game(2);
+
 
     @FXML
     private ImageView deckImgFaceDown;
@@ -34,6 +37,14 @@ public class ControllerTwoPlayer implements Initializable {
         window.setScene(sceneStart);
         window.show();
 
+    }
+
+    public int clickP1C0(ActionEvent event) throws IOException {
+        return 0;
+    }
+
+    public Card clickDeckButton(ActionEvent event) throws IOException{
+        return gameForTwo.getDeck();
     }
 
     @Override
