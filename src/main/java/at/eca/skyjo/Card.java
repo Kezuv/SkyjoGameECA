@@ -13,6 +13,12 @@ public class Card {
         this.faceUp = false;
     }
 
+    public Card(boolean willbereplaced) {
+        this.value = 0;
+        this.faceUp = true;
+   //     this.imgCard = imgCard;
+    }
+
     public void flip() {
         this.faceUp = !this.faceUp;
     }

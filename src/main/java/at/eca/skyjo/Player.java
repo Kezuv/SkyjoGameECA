@@ -30,6 +30,7 @@ public class Player {
         hand.set(place, card);
         tray.addCardtoTray(swapped);
 
+        threeofakind(tray);
     }
 
     public void addToScore(int value) {
@@ -54,5 +55,29 @@ public class Player {
             }
         }
         return "" + values + " Points + " + notvisible + " not visible.";
+    }
+
+    public void threeofakind(TrayDeck tray){
+        if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
+                (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())){
+
+            Card replaceCard = new Card(true);
+            swapCard(replaceCard,0, tray);
+            swapCard(replaceCard,4,tray);
+            swapCard(replaceCard,8,tray);
+
+        } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
+                (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
+
+            Card replaceCard = new Card(true);
+            swapCard(replaceCard,1, tray);
+            swapCard(replaceCard,5,tray);
+            swapCard(replaceCard,9,tray);
+        } //else if () {
+
+      //  } else if () {
+
+      //  }
+
     }
 }
