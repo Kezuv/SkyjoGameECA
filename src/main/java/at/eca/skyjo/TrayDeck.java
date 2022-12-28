@@ -22,4 +22,16 @@ public class TrayDeck {
         withdraw.flip();
         traycards.add(withdraw);
     }
+
+    public void swapHandDiscard(int intHand, Deck deck, Player player) {
+        List<Card> temp = new ArrayList<>();
+        temp.add(deck.getDiscardPile().remove(0));
+        temp.add(player.getHand().remove(intHand));
+        deck.getDiscardPile().add(temp.get(0));
+        player.getHand().add(temp.get(intHand));
+
+        //deck.getDiscardPile().add(player.getHand().remove(intHand));
+
+
+    }
 }

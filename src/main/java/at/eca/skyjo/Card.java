@@ -1,16 +1,29 @@
 package at.eca.skyjo;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Card {
     private int value;
     private boolean faceUp;
 
-    private Image imgCard;
+    private Image cardImage;
+    private ImageView cardViewImage;
+
+    //private Image cardBackground;
+    //private ImageView cardViewBackground;
+
+
+    public ImageView getCardViewImage() {
+        return cardViewImage;
+    }
 
     public Card(int value) {
         this.value = value;
         this.faceUp = false;
+        String fileName = "Card_" + value + ".png";
+        cardImage = new Image("/at/eca/skyjo/img/" + fileName);
+        cardViewImage = new ImageView(cardImage);
     }
 
     public Card(boolean willbereplaced) {
@@ -30,8 +43,17 @@ public class Card {
         return this.value;
     }
 
+   public Image getCardImage() {
+        return cardImage;
+   }
+
+
+
+    /*
     @Override
     public String toString() {
         return "Value: " + value;
     }
+
+     */
 }

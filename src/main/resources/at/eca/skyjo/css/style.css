@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: #D9E7CB;
+    -fx-background-color: linear-gradient(to bottom right, #eebcf7,  #D9E7CB);
     -fx-font-family: "JetBrainsMonoNL Nerd Font Mono";
     -fx-font-size: 16;
 }
@@ -7,8 +7,24 @@
 .button {
     -fx-padding: 10 16;
     -fx-background-radius: 50;
-    -fx-background-color: #6989d57D;
+    -fx-background-color: #869de3;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, .6), 5, 0.0 , 0 , 1 );
 
+}
+
+.button:hover {
+    -fx-background-color: #9fb5f5;
+}
+
+#cardBtn {
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: none;
+
+}
+
+#cardBtn:hover {
+    -fx-opacity: 0.8;
 }
 
 #headingOne {

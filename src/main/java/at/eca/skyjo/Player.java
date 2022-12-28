@@ -1,5 +1,8 @@
 package at.eca.skyjo;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,12 +10,29 @@ import java.util.Random;
 public class Player {
     private String name;
     private List<Card> hand;
+    private Image cardBackground;
+    private ImageView cardViewBackground;
+    private List<ImageView> cardBack = new ArrayList<>();
     private int score;
+
+    public ImageView getCardViewBackground() {
+        return cardViewBackground;
+    }
+
+    public List<ImageView> getCardBack() {
+        return cardBack;
+    }
 
     public Player(String name, Deck deck) {
         this.name = name;
-        hand = new ArrayList<Card>(12);
+        hand = new ArrayList<Card>();
         dealCards(deck);
+        for (int i = 1; i <= 12; i++) {
+            cardBackground = new Image("/at/eca/skyjo/img/cardBackground.png");
+            cardViewBackground = new ImageView(cardBackground);
+            cardBack.add(cardViewBackground);
+        }
+
         this.score = 0;
     }
 
@@ -74,6 +94,23 @@ public class Player {
     public Card getCard (int cardPosition){
         return hand.get(cardPosition);
     }
+
+    public List<Card> getHand() {
+
+        return hand;
+    }
+
+
+    private Deck deck;
+
+    public void swapHandDiscard() {
+
+    }
+
+
+
+
+
 
     public void threeOfAKind(TrayDeck tray){
         if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
