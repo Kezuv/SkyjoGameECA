@@ -15,6 +15,7 @@ public class Card {
 
 
     public ImageView getCardViewImage() {
+        this.faceUp = true;
         return cardViewImage;
     }
 

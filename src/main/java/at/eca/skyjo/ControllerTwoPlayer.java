@@ -94,9 +94,10 @@ public class ControllerTwoPlayer implements Initializable {
     private String viewStart = "/at/eca/skyjo/fxml/sceneStart.fxml";
     private String viewRules = "/at/eca/skyjo/fxml/sceneRules.fxml";
 
-    Deck deck = new Deck();
-    Player player1 = new Player("Player1", deck);
-    Player player2 = new Player("Player2", deck);
+    Game gameTwoPlayer = new Game(2);
+    Deck deck = gameTwoPlayer.getDeck();
+    Player player1 = gameTwoPlayer.getPlayers(0);
+    Player player2 = gameTwoPlayer.getPlayers(1);
 
 
     @FXML
@@ -107,16 +108,6 @@ public class ControllerTwoPlayer implements Initializable {
 
 
     // ================== methoden ========================
-
-
-
-
-
-
-
-
-
-
 
     @FXML
     public void buttonGoBackStartScene(ActionEvent event) throws IOException {
@@ -156,98 +147,108 @@ public class ControllerTwoPlayer implements Initializable {
 
     // +++++++++++++++ PLAYER ONE Actions ++++++++++++++++++++++++
 
-
-
-
-
     /*
     @FXML
     public void playerOneCard00(ActionEvent event) {
 
         pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
     }
-
-
      */
 
-
-
-    public void playerOneCard10(ActionEvent event) throws IOException {
-        pOneCard10GameTwo.setGraphic((Node) player1.getCard(1).getCardViewImage());
+    // Player 1 Table Setup
+    public void player1Table(int cardNumber, Button playerButton){
+        playerButton.setGraphic((Node) player1.getCard(cardNumber).getCardViewImage());
+        labelScorePlayer1.setText(player1.scoreToString());
     }
 
-    public void playerOneCard20(ActionEvent event) throws IOException {
-        pOneCard20GameTwo.setGraphic((Node) player1.getCard(2).getCardViewImage());
+    // Cardbuttons Player 1
+    public void playerOneCard00(ActionEvent event) throws IOException {
+        player1Table(0,pOneCard00GameTwo);
     }
-
-    public void playerOneCard30(ActionEvent event) throws IOException {
-        pOneCard30GameTwo.setGraphic((Node) player1.getCard(3).getCardViewImage());
-    }
-
     public void playerOneCard01(ActionEvent event) throws IOException {
-        pOneCard01GameTwo.setGraphic((Node) player1.getCard(4).getCardViewImage());
+        player1Table(1,pOneCard01GameTwo);
     }
-
-    public void playerOneCard11(ActionEvent event) throws IOException {
-        pOneCard11GameTwo.setGraphic((Node) player1.getCard(5).getCardViewImage());
-    }
-
-    public void playerOneCard21(ActionEvent event) throws IOException {
-        pOneCard21GameTwo.setGraphic((Node) player1.getCard(6).getCardViewImage());
-    }
-
-    public void playerOneCard31(ActionEvent event) throws IOException {
-        pOneCard31GameTwo.setGraphic((Node) player1.getCard(7).getCardViewImage());
-    }
-
     public void playerOneCard02(ActionEvent event) throws IOException {
-        pOneCard02GameTwo.setGraphic((Node) player1.getCard(8).getCardViewImage());
+        player1Table(2,pOneCard02GameTwo);
     }
-
+    public void playerOneCard10(ActionEvent event) throws IOException {
+        player1Table(3,pOneCard10GameTwo);
+    }
+    public void playerOneCard11(ActionEvent event) throws IOException {
+        player1Table(4,pOneCard11GameTwo);
+    }
     public void playerOneCard12(ActionEvent event) throws IOException {
-        pOneCard12GameTwo.setGraphic((Node) player1.getCard(9).getCardViewImage());
+        player1Table(5,pOneCard12GameTwo);
     }
-
+    public void playerOneCard20(ActionEvent event) throws IOException {
+        player1Table(6,pOneCard20GameTwo);
+    }
+    public void playerOneCard21(ActionEvent event) throws IOException {
+        player1Table(7,pOneCard21GameTwo);
+    }
     public void playerOneCard22(ActionEvent event) throws IOException {
-        pOneCard22GameTwo.setGraphic((Node) player1.getCard(10).getCardViewImage());
+        player1Table(8,pOneCard22GameTwo);
     }
-
+    public void playerOneCard30(ActionEvent event) throws IOException {
+        player1Table(9,pOneCard30GameTwo);
+    }
+    public void playerOneCard31(ActionEvent event) throws IOException {
+        player1Table(10,pOneCard31GameTwo);
+    }
     public void playerOneCard32(ActionEvent event) throws IOException {
-        pOneCard32GameTwo.setGraphic((Node) player1.getCard(11).getCardViewImage());
-
-
-
-
+        player1Table(11,pOneCard32GameTwo);
     }
 
 
 
+    // Player  Table Setup
+    public void player2Table(int cardNumber, Button playerButton){
+        playerButton.setGraphic((Node) player2.getCard(cardNumber).getCardViewImage());
+        labelScorePlayer2.setText(player2.scoreToString());
+    }
 
-
+    // Cardbuttons Player 1
+    public void playerTwoCard00(ActionEvent event) throws IOException {
+        player2Table(0,pTwoCard00GameTwo);
+    }
+    public void playerTwoCard01(ActionEvent event) throws IOException {
+        player2Table(1,pTwoCard01GameTwo);
+    }
+    public void playerTwoCard02(ActionEvent event) throws IOException {
+        player2Table(2,pTwoCard02GameTwo);
+    }
+    public void playerTwoCard10(ActionEvent event) throws IOException {
+        player2Table(3,pTwoCard10GameTwo);
+    }
+    public void playerTwoCard11(ActionEvent event) throws IOException {
+        player2Table(4,pTwoCard11GameTwo);
+    }
+    public void playerTwoCard12(ActionEvent event) throws IOException {
+        player2Table(5,pTwoCard12GameTwo);
+    }
+    public void playerTwoCard20(ActionEvent event) throws IOException {
+        player2Table(6,pTwoCard20GameTwo);
+    }
+    public void playerTwoCard21(ActionEvent event) throws IOException {
+        player2Table(7,pTwoCard21GameTwo);
+    }
+    public void playerTwoCard22(ActionEvent event) throws IOException {
+        player2Table(8,pTwoCard22GameTwo);
+    }
+    public void playerTwoCard30(ActionEvent event) throws IOException {
+        player2Table(9,pTwoCard30GameTwo);
+    }
+    public void playerTwoCard31(ActionEvent event) throws IOException {
+        player2Table(10,pTwoCard31GameTwo);
+    }
+    public void playerTwoCard32(ActionEvent event) throws IOException {
+        player2Table(11,pTwoCard32GameTwo);
+    }
     // +++++++++++++++ END PLAYER ONE Actions ++++++++++++++++++++++++
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
-
-
-        pOneCard00GameTwo.setOnMouseClicked(e -> {
-            if (e.getButton() == MouseButton.PRIMARY) {
-                pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
-            } else if (e.getButton() == MouseButton.SECONDARY) {
-
-                deck.swapHandDiscard(0, deck, player1);
-
-                pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
-                deckImgFaceUp.setGraphic((Node) deck.getDiscardCard().getCardViewImage());
-            }
-        });
-
-
-
 
 
         deckImgFaceDown.setGraphic((Node) deck.getCardBack().get(25));
@@ -257,6 +258,8 @@ public class ControllerTwoPlayer implements Initializable {
         labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
         labelCardsLeftDiscard.setText(String.valueOf("Cards in the discard pile: " + deck.getSizeDiscardPile()));
         labelInstructions.setText("Each player reveals two of their cards. The player with the highest total begins the first round.");
+        labelScorePlayer1.setText(player1.scoreToString());
+        labelScorePlayer2.setText(player2.scoreToString());
 
         /*
         Deck deck = new Deck();

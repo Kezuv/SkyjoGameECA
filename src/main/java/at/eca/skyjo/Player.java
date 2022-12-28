@@ -15,6 +15,7 @@ public class Player {
     private List<ImageView> cardBack = new ArrayList<>();
     private int score;
 
+
     public ImageView getCardViewBackground() {
         return cardViewBackground;
     }
@@ -45,11 +46,9 @@ public class Player {
 
 
     public void swapCard(Card card, int place, TrayDeck tray) {
-
         Card swapped = hand.get(place);
         hand.set(place, card);
         tray.addCardtoTray(swapped);
-
         threeOfAKind(tray);
     }
 
@@ -65,10 +64,8 @@ public class Player {
         int values =  0;
         int notvisible = 0;
 
-        for (int i = 0; i<hand.size(); i++){
-            Card tocheck = hand.get(i);
-
-            if (!tocheck.isFaceUp()){
+        for (Card tocheck : hand) {
+            if (!tocheck.isFaceUp()) {
                 notvisible = notvisible + 1;
             } else {
                 values = values + tocheck.getValue();
@@ -96,7 +93,6 @@ public class Player {
     }
 
     public List<Card> getHand() {
-
         return hand;
     }
 

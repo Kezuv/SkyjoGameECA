@@ -20,7 +20,7 @@ public class Game {
         deck = new Deck();
         trayDeck = new TrayDeck();
 
-        for (int i = 1; i < playerCount; i++) {
+        for (int i = 1; i < (playerCount+1); i++) {
             players.add(new Player("Player " + i, this.deck));
         }
 
@@ -57,8 +57,8 @@ public class Game {
         return trayDeck;
     }
 
-    public Card getDeck() {
-        return deck.getDeckCard();
+    public Deck getDeck() {
+        return deck;
     }
 
     private void endGame() {
