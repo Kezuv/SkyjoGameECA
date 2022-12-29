@@ -8,9 +8,6 @@ public class Game {
 
     private List<Player> players;
     private Deck deck;
-
-
-
     private TrayDeck trayDeck;
     private Player currentPlayer;
 
@@ -21,7 +18,7 @@ public class Game {
         trayDeck = new TrayDeck();
 
         for (int i = 1; i < (playerCount+1); i++) {
-            players.add(new Player("Player " + i, this.deck));
+            players.add(new Player("Spieler " + i, this.deck));
         }
 
     }

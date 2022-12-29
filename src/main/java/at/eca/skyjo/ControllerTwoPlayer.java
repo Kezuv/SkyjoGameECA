@@ -87,6 +87,10 @@ public class ControllerTwoPlayer implements Initializable {
     private Label labelCardsLeftDeck;
     @FXML
     private Label labelCardsLeftDiscard;
+    @FXML
+    private Label labelPlayerOneName = new Label();
+    @FXML
+    private Label labelPlayerTwoName = new Label();
 
     @FXML
     private Label labelInstructions;
@@ -97,7 +101,9 @@ public class ControllerTwoPlayer implements Initializable {
     Game gameTwoPlayer = new Game(2);
     Deck deck = gameTwoPlayer.getDeck();
     Player player1 = gameTwoPlayer.getPlayers(0);
+
     Player player2 = gameTwoPlayer.getPlayers(1);
+
 
 
     @FXML
@@ -251,15 +257,18 @@ public class ControllerTwoPlayer implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        deckImgFaceDown.setGraphic((Node) deck.getCardBack().get(25));
-        deckImgFaceUp.setGraphic((Node) deck.addToDiscardPile().getCardViewImage());
+        deckImgFaceDown.setGraphic(deck.getCardBack().get(25));
+        deckImgFaceUp.setGraphic(deck.addToDiscardPile().getCardViewImage());
 
 
-        labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
-        labelCardsLeftDiscard.setText(String.valueOf("Cards in the discard pile: " + deck.getSizeDiscardPile()));
+        labelCardsLeftDeck.setText("Cards left in the deck: " + deck.getSizeCards());
+        labelCardsLeftDiscard.setText("Cards in the discard pile: " + deck.getSizeDiscardPile());
         labelInstructions.setText("Each player reveals two of their cards. The player with the highest total begins the first round.");
         labelScorePlayer1.setText(player1.scoreToString());
         labelScorePlayer2.setText(player2.scoreToString());
+
+        labelPlayerOneName.setText(player1.getName());
+        labelPlayerTwoName.setText(player2.getName());
 
         /*
         Deck deck = new Deck();

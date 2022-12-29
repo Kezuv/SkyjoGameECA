@@ -11,7 +11,7 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Label text="Player 1" />
+                  <Label fx:id="labelPlayerOneName" text="Player 1" />
                   <Label fx:id="labelScorePlayer1" text="Score: player1">
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -109,7 +109,7 @@
             </VBox>
             <VBox alignment="CENTER">
                <children>
-                  <Label text="Player 2" />
+                  <Label fx:id="labelPlayerTwoName" text="Player 2" />
                   <Label fx:id="labelScorePlayer2" text="Score: player2">
                      <VBox.margin>
                         <Insets top="15.0" />

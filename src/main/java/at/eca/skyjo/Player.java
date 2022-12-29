@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Player {
+
+
     private String name;
     private List<Card> hand;
     private Image cardBackground;
@@ -58,6 +60,10 @@ public class Player {
 
     public int getScore() {
         return score;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String scoreToString(){
