@@ -8,7 +8,9 @@ public class Card {
     private boolean faceUp;
 
     private Image cardImage;
+    private Image cardBack;
     private ImageView cardViewImage;
+    private ImageView cardViewBack;
 
     //private Image cardBackground;
     //private ImageView cardViewBackground;
@@ -27,7 +29,22 @@ public class Card {
         cardViewImage = new ImageView(cardImage);
     }
 
-    public Card(boolean willbereplaced) {
+    /*
+    public Card(int value, boolean face) {
+        this.value = value;
+        if (face) {
+            String fileName = "Card_" + value + ".png";
+            cardImage = new Image("/at/eca/skyjo/img/" + fileName);
+            cardViewImage = new ImageView(cardImage);
+        } else {
+            cardBack = new Image("/at/eca/skyjo/img/cardBackground.png");
+            cardViewBack = new ImageView(cardBack);
+        }
+    }
+
+     */
+
+    public Card(boolean willBeReplaced) {
         this.value = 0;
         this.faceUp = true;
    //     this.imgCard = imgCard;
@@ -50,11 +67,11 @@ public class Card {
 
 
 
-    /*
+
     @Override
     public String toString() {
-        return "Value: " + value;
+        return "" + value;
     }
 
-     */
+
 }

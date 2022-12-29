@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class ControllerTwoPlayer implements Initializable {
@@ -76,9 +77,19 @@ public class ControllerTwoPlayer implements Initializable {
     @FXML
     private Button pTwoCard32GameTwo;
 
+    @FXML
+    private Button deckImgFaceDown;
+
+    @FXML
+    private Button deckImgFaceUp;
+    //@FXML
+    //private Button imgRulesBtn;
+
     // ====
 
+
     // label
+
     @FXML
     private Label labelScorePlayer1;
     @FXML
@@ -94,16 +105,27 @@ public class ControllerTwoPlayer implements Initializable {
 
     @FXML
     private Label labelInstructions;
+
+
+
+    /*
+    @FXML
+    Image imgRulesIcon = new Image("/at/eca/skyjo/img/iconRules.png");
+    ImageView viewRulesBtn = new ImageView(imgRulesIcon);
+
+
+     */
+
     // label ende
     private String viewStart = "/at/eca/skyjo/fxml/sceneStart.fxml";
-    private String viewRules = "/at/eca/skyjo/fxml/sceneRules.fxml";
+    //private String viewRules = "/at/eca/skyjo/fxml/sceneRules.fxml";
 
     Game gameTwoPlayer = new Game(2);
+
     Deck deck = gameTwoPlayer.getDeck();
     Player player1 = gameTwoPlayer.getPlayers(0);
 
     Player player2 = gameTwoPlayer.getPlayers(1);
-
 
 
     @FXML
@@ -128,10 +150,8 @@ public class ControllerTwoPlayer implements Initializable {
 
     }
 
-
-
-
-    public void testBtn(ActionEvent event) throws IOException {
+    /*
+    public void buttonRulesChangeScene(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(viewRules));
         Parent viewRules = loader.load();
@@ -167,9 +187,39 @@ public class ControllerTwoPlayer implements Initializable {
         labelScorePlayer1.setText(player1.scoreToString());
     }
 
-    // Cardbuttons Player 1
+    public void swapHandDiscard(Deck deck, Button playerButton, Player player, int cardNumber) {
+        deck.swap(player);
+        playerButton.setGraphic(player.getCard(cardNumber).getCardViewImage());
+        deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+    }
+
+    // CardButtons Player 1
     public void playerOneCard00(ActionEvent event) throws IOException {
-        player1Table(0,pOneCard00GameTwo);
+        pOneCard00GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(0,pOneCard00GameTwo);
+
+                System.out.println("===================================================================" + System.lineSeparator() + "flip card of hand");
+                System.out.println("DiscardPile: " + deck.getDiscardPile());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Deck: " + deck.getCards());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Player Hand: " + player1.getHand());
+
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard00GameTwo, player1, 0);
+
+                System.out.println("===================================================================" + System.lineSeparator() + "swap hand with discard pile");
+                System.out.println("DiscardPile: " + deck.getDiscardPile());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Deck: " + deck.getCards());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Player Hand: " + player1.getHand());
+            }
+        });
+
+
+
     }
     public void playerOneCard01(ActionEvent event) throws IOException {
         player1Table(1,pOneCard01GameTwo);
@@ -213,7 +263,7 @@ public class ControllerTwoPlayer implements Initializable {
         labelScorePlayer2.setText(player2.scoreToString());
     }
 
-    // Cardbuttons Player 1
+    // CardButtons Player 1
     public void playerTwoCard00(ActionEvent event) throws IOException {
         player2Table(0,pTwoCard00GameTwo);
     }
@@ -253,12 +303,15 @@ public class ControllerTwoPlayer implements Initializable {
     // +++++++++++++++ END PLAYER ONE Actions ++++++++++++++++++++++++
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        deckImgFaceDown.setGraphic(deck.getCardBack().get(25));
-        deckImgFaceUp.setGraphic(deck.addToDiscardPile().getCardViewImage());
+        deck.addDeckToDiscardPile();
+        deckImgFaceDown.setGraphic((Node) deck.getCardBack().get(24));
+        deckImgFaceUp.setGraphic((Node) deck.getDeckCard().getCardViewImage());
 
 
         labelCardsLeftDeck.setText("Cards left in the deck: " + deck.getSizeCards());
@@ -267,9 +320,15 @@ public class ControllerTwoPlayer implements Initializable {
         labelScorePlayer1.setText(player1.scoreToString());
         labelScorePlayer2.setText(player2.scoreToString());
 
+        System.out.println("===================================================================");
+        System.out.println("DiscardPile: " + deck.getDiscardPile());
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("Deck: " + deck.getCards());
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("Player Hand: " + player1.getHand());
+
         labelPlayerOneName.setText(player1.getName());
         labelPlayerTwoName.setText(player2.getName());
-
         /*
         Deck deck = new Deck();
         Card card = new Card(0);
@@ -314,6 +373,59 @@ public class ControllerTwoPlayer implements Initializable {
         pTwoCard12GameTwo.setGraphic((Node) deck.getCardBack().get(21));
         pTwoCard22GameTwo.setGraphic((Node) deck.getCardBack().get(22));
         pTwoCard32GameTwo.setGraphic((Node) deck.getCardBack().get(23));
+
+
+        //imgRulesBtn.setGraphic(viewRulesBtn);
+
+
+
+
+
+        deckImgFaceDown.setOnMouseClicked(e -> {
+            if (e.getButton() == MouseButton.PRIMARY) {
+                //deck.addToDiscardPile();
+                //deck.getDiscardPile().add(0, deck.getCards().remove(0));
+                deck.addDeckToDiscardPile();
+                deckImgFaceUp.setGraphic((Node) deck.getDeckCard().getCardViewImage());
+
+
+                //test
+                labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
+                labelCardsLeftDiscard.setText(String.valueOf("Cards in the discard pile: " + deck.getSizeDiscardPile()));
+                System.out.println("===================================================================" + System.lineSeparator() + "add to discard pile");
+                System.out.println("DiscardPile: " + deck.getDiscardPile());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Deck: " + deck.getCards());
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("Player Hand: " + player1.getHand());
+            }
+        });
+
+
+
+        /*
+        pOneCard00GameTwo.setOnMouseClicked(e -> {
+            if (e.getButton() == MouseButton.PRIMARY) {
+                pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
+            } else if (e.getButton() == MouseButton.SECONDARY) {
+
+                //pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
+
+                //deck.swapHandDiscard(0, deck, player1);
+
+                deck.swap(player1);
+
+                pOneCard00GameTwo.setGraphic(player1.getCard(0).getCardViewImage());
+
+                deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+
+                deck.swap(player1);
+
+            }
+        });
+
+
+         */
 
 
 

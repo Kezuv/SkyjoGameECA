@@ -8,11 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-    private List<Card> cards;
+    private final List<Card> cards = new ArrayList<>();
 
-    private List<Card> discardPile;
+    private final List<Card> discardPile = new ArrayList<>();
 
-    private List<Card> tempPile;
+    private List<Card> temp1 = new ArrayList<>();
+    private List<Card> temp2 = new ArrayList<>();
 
     private Image cardBackground;
     private ImageView cardViewBackground;
@@ -22,7 +23,7 @@ public class Deck {
 
     public Deck() {
 
-        cards = new ArrayList<>();
+        //cards = new ArrayList<>();
         for (int i = -2; i <= 12; i++) {
             int numCards = 10;
             if (i == -2) {
@@ -41,16 +42,14 @@ public class Deck {
             cardViewBackground = new ImageView(cardBackground);
             cardBack.add(cardViewBackground);
         }
-        discardPile = new ArrayList<>();
+        //discardPile = new ArrayList<>();
     }
 
     public List<ImageView> getCardBack() {
         return cardBack;
     }
 
-    public List<Card> getTempPile() {
-        return tempPile;
-    }
+
 
 
 
@@ -80,15 +79,16 @@ public class Deck {
 
 
 
-    public Card addToTemp() {
-        tempPile.add(discardPile.remove(0));
-        return tempPile.get(0);
-    }
+
 
 
 
     public List<Card> getDiscardPile() {
         return discardPile;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 
     public void printDeck() {
@@ -118,19 +118,52 @@ public class Deck {
 
     }
 
-     */
+     /*
 
     public void swapHandDiscard(int intHand, Deck deck, Player player) {
-        List<Card> temp = new ArrayList<>();
-        List<Card> temp2 = new ArrayList<>();
-        temp.add(0, deck.getDiscardPile().remove(0));
+
+        temp1.add(0, deck.getDiscardPile().remove(0));
         temp2.add(player.getHand().remove(intHand));
         deck.getDiscardPile().add(0, temp2.remove(0));
-        player.getHand().add(getDiscardPile().size() -1, temp.remove(intHand));
+
+        player.getHand().add(0, temp1.remove(intHand));
 
         //deck.getDiscardPile().add(player.getHand().remove(intHand));
 
 
     }
+
+    */
+
+    public void swap(Player player) {
+
+        /*
+        Card temp = discardPile.get(0);
+        discardPile.set(0, player.getHand().get(0));
+        player.getHand().set(0, temp);
+
+         */
+
+        temp1.add(0, discardPile.remove(0));
+        temp2.add(0, player.getHand().remove(0));
+        player.getHand().add(0, temp1.remove(0));
+        discardPile.add(0, temp2.remove(0));
+
+
+
+
+    }
+
+    public void addDeckToDiscardPile() {
+
+        //Card temp = deck.getCards().get(0);
+        //deck.getCards().remove(0);
+        //deck.getDiscardPile().add(temp);
+
+        discardPile.add(0, cards.remove(0));
+
+    }
+
+
 
 }

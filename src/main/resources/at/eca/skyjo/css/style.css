@@ -14,12 +14,18 @@
 
 .button:hover {
     -fx-background-color: #9fb5f5;
+
 }
 
 #cardBtn {
     -fx-padding: 0;
     -fx-background-radius: 0;
     -fx-background-color: none;
+
+}
+
+#rulesBtn {
+    -fx-padding: 5;
 
 }
 
