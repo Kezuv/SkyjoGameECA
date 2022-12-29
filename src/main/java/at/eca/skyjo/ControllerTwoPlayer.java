@@ -176,7 +176,7 @@ public class ControllerTwoPlayer implements Initializable {
     }
 
     public void swapHandDiscard(Deck deck, Button playerButton, Player player, int cardNumber) {
-        deck.swap(player);
+        deck.swap(player, cardNumber);
         playerButton.setGraphic(player.getCard(cardNumber).getCardViewImage());
         deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
     }
@@ -210,37 +210,112 @@ public class ControllerTwoPlayer implements Initializable {
 
     }
     public void playerOneCard01(ActionEvent event) throws IOException {
-        player1Table(1,pOneCard01GameTwo);
+        pOneCard01GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(1,pOneCard01GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard01GameTwo, player1, 1);
+            }
+        });
     }
     public void playerOneCard02(ActionEvent event) throws IOException {
-        player1Table(2,pOneCard02GameTwo);
+
+        pOneCard02GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(2,pOneCard02GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard01GameTwo, player1, 2);
+            }
+        });
     }
     public void playerOneCard10(ActionEvent event) throws IOException {
-        player1Table(3,pOneCard10GameTwo);
+        pOneCard10GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(3,pOneCard10GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard10GameTwo, player1, 3);
+            }
+        });
     }
     public void playerOneCard11(ActionEvent event) throws IOException {
-        player1Table(4,pOneCard11GameTwo);
+        pOneCard11GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(4,pOneCard11GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard11GameTwo, player1, 4);
+            }
+        });
     }
     public void playerOneCard12(ActionEvent event) throws IOException {
-        player1Table(5,pOneCard12GameTwo);
+
+        pOneCard12GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(5,pOneCard12GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard12GameTwo, player1, 5);
+            }
+        });
     }
     public void playerOneCard20(ActionEvent event) throws IOException {
-        player1Table(6,pOneCard20GameTwo);
+
+        pOneCard20GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(6,pOneCard20GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard20GameTwo, player1, 6);
+            }
+        });
     }
     public void playerOneCard21(ActionEvent event) throws IOException {
-        player1Table(7,pOneCard21GameTwo);
+
+        pOneCard21GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(7,pOneCard21GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard21GameTwo, player1, 7);
+            }
+        });
     }
     public void playerOneCard22(ActionEvent event) throws IOException {
-        player1Table(8,pOneCard22GameTwo);
+
+        pOneCard22GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(8,pOneCard22GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard22GameTwo, player1, 8);
+            }
+        });
     }
     public void playerOneCard30(ActionEvent event) throws IOException {
-        player1Table(9,pOneCard30GameTwo);
+
+        pOneCard30GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(9,pOneCard30GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard30GameTwo, player1, 9);
+            }
+        });
     }
     public void playerOneCard31(ActionEvent event) throws IOException {
-        player1Table(10,pOneCard31GameTwo);
+
+        pOneCard31GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(10,pOneCard31GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard31GameTwo, player1, 10);
+            }
+        });
     }
     public void playerOneCard32(ActionEvent event) throws IOException {
         player1Table(11,pOneCard32GameTwo);
+
+        pOneCard32GameTwo.setOnMouseClicked(event1 -> {
+            if (event1.getButton() == MouseButton.PRIMARY) {
+                player1Table(11,pOneCard32GameTwo);
+            } else if (event1.getButton() == MouseButton.SECONDARY) {
+                swapHandDiscard(deck, pOneCard32GameTwo, player1, 11);
+            }
+        });
     }
 
 
@@ -297,9 +372,9 @@ public class ControllerTwoPlayer implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        deck.addDeckToDiscardPile();
+        deck.getDiscardPile().add(0,deck.getCards().remove(0));
         deckImgFaceDown.setGraphic((Node) deck.getCardBack().get(24));
-        deckImgFaceUp.setGraphic((Node) deck.getDeckCard().getCardViewImage());
+        deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
 
 
         labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
@@ -315,25 +390,7 @@ public class ControllerTwoPlayer implements Initializable {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Player Hand: " + player1.getHand());
 
-        /*
-        Deck deck = new Deck();
-        Card card = new Card(0);
-        Card card2 = new Card(2);
 
-        pOneCard00GameTwo.setGraphic(card.getCardViewBackground());
-        pOneCard10GameTwo.setGraphic(card2.getCardViewBackground());
-        pOneCard20GameTwo.setGraphic(card.getCardViewBackground());
-        pOneCard30GameTwo.setGraphic(card.getCardViewBackground());
-
-         */
-
-        //Deck deck = new Deck();
-
-        //pOneCard00GameTwo.setGraphic(player1.getCardViewBackground());
-        //pOneCard10GameTwo.setGraphic(player1.getCardViewBackground());
-        //deckImgFaceDown.setGraphic(player1.getCardViewBackground());
-
-        //deckImgFaceDown.setGraphic((Node) player1.getCardBack().get(0));
         pOneCard00GameTwo.setGraphic((Node) deck.getCardBack().get(0));
         pOneCard10GameTwo.setGraphic((Node) deck.getCardBack().get(1));
         pOneCard20GameTwo.setGraphic((Node) deck.getCardBack().get(2));
@@ -372,7 +429,7 @@ public class ControllerTwoPlayer implements Initializable {
                 //deck.addToDiscardPile();
                 //deck.getDiscardPile().add(0, deck.getCards().remove(0));
                 deck.addDeckToDiscardPile();
-                deckImgFaceUp.setGraphic((Node) deck.getDeckCard().getCardViewImage());
+                deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
 
 
                 //test

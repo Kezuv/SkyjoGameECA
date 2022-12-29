@@ -10,7 +10,7 @@ public class Card {
     private Image cardImage;
     private Image cardBack;
     private ImageView cardViewImage;
-    private ImageView cardViewBack;
+    //private ImageView cardViewBack;
 
     //private Image cardBackground;
     //private ImageView cardViewBackground;

@@ -135,7 +135,7 @@ public class Deck {
 
     */
 
-    public void swap(Player player) {
+    public void swap(Player player, int cardNumber) {
 
         /*
         Card temp = discardPile.get(0);
@@ -145,8 +145,8 @@ public class Deck {
          */
 
         temp1.add(0, discardPile.remove(0));
-        temp2.add(0, player.getHand().remove(0));
-        player.getHand().add(0, temp1.remove(0));
+        temp2.add(0, player.getHand().remove(cardNumber));
+        player.getHand().add(cardNumber, temp1.remove(0));
         discardPile.add(0, temp2.remove(0));
 
 
