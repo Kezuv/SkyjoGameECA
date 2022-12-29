@@ -35,18 +35,18 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button id="cardBtn" fx:id="p1c0" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#playerOneCard00" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" />
-                              <Button id="cardBtn" fx:id="p1c1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#playerOneCard10" prefHeight="87.0" prefWidth="55.0" snapToPixel="false" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" />
-                              <Button id="cardBtn" fx:id="p1c2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard20" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" />
-                              <Button id="cardBtn" fx:id="p1c3" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#playerOneCard30" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="3" />
-                              <Button id="cardBtn" fx:id="p1c4" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard01" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p1c5" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard11" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p1c6" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard21" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p1c7" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard31" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p1c8" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard02" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p1c9" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard12" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p1c10" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard22" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p1c11" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerOneCard32" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p1c0" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#player1Card0" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" />
+                              <Button id="cardBtn" fx:id="p1c3" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#player1Card3" prefHeight="87.0" prefWidth="55.0" snapToPixel="false" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" />
+                              <Button id="cardBtn" fx:id="p1c6" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card6" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" />
+                              <Button id="cardBtn" fx:id="p1c9" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#player1Card9" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="3" />
+                              <Button id="cardBtn" fx:id="p1c1" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card1" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p1c4" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card4" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p1c7" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card7" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p1c10" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card10" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p1c2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card2" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p1c5" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card5" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p1c8" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card8" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p1c11" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player1Card11" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -54,6 +54,7 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </StackPane>
+                  <Label fx:id="player1Turn" />
                </children>
             </VBox>
             <VBox alignment="CENTER">
@@ -99,7 +100,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <Button id="cardBtn" fx:id="deckImgFaceDown" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="87.0" prefWidth="55.0" />
+                              <Button id="cardBtn" fx:id="deckImgFaceDown" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pickUpCard" prefHeight="87.0" prefWidth="55.0" />
                               <Button id="cardBtn" fx:id="deckImgFaceUp" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
@@ -142,18 +143,18 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button id="cardBtn" fx:id="p2c0" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#playerTwoCard00" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" />
-                              <Button id="cardBtn" fx:id="p2c1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#playerTwoCard10" prefHeight="87.0" prefWidth="55.0" snapToPixel="false" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" />
-                              <Button id="cardBtn" fx:id="p2c2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard20" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" />
-                              <Button id="cardBtn" fx:id="p2c3" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#playerTwoCard30" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="3" />
-                              <Button id="cardBtn" fx:id="p2c4" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard01" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p2c5" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard11" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p2c6" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard21" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p2c7" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard31" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button id="cardBtn" fx:id="p2c8" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard02" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p2c9" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard12" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p2c10" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard22" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Button id="cardBtn" fx:id="p2c11" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playerTwoCard32" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p2c0" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#player2Card0" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" />
+                              <Button id="cardBtn" fx:id="p2c3" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#player2Card3" prefHeight="87.0" prefWidth="55.0" snapToPixel="false" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="1" />
+                              <Button id="cardBtn" fx:id="p2c6" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card6" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" />
+                              <Button id="cardBtn" fx:id="p2c9" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#player2Card9" prefHeight="87.0" prefWidth="55.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="3" />
+                              <Button id="cardBtn" fx:id="p2c1" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card1" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p2c4" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card4" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p2c7" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card7" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p2c10" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card10" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button id="cardBtn" fx:id="p2c2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card2" prefHeight="87.0" prefWidth="55.0" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p2c5" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card5" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p2c8" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card8" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button id="cardBtn" fx:id="p2c11" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#player2Card11" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -161,6 +162,7 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </StackPane>
+                  <Label fx:id="player2Turn" />
                </children>
             </VBox>
          </children>

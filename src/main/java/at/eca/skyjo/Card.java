@@ -10,14 +10,11 @@ public class Card {
     private Image cardImage;
     private Image cardBack;
     private ImageView cardViewImage;
-    //private ImageView cardViewBack;
+    private ImageView cardViewBack;
 
-    //private Image cardBackground;
-    //private ImageView cardViewBackground;
 
 
     public ImageView getCardViewImage() {
-        this.faceUp = true;
         return cardViewImage;
     }
 
@@ -27,6 +24,8 @@ public class Card {
         String fileName = "Card_" + value + ".png";
         cardImage = new Image("/at/eca/skyjo/img/" + fileName);
         cardViewImage = new ImageView(cardImage);
+        cardBack = new Image("/at/eca/skyjo/img/CardBackground.png");
+        cardViewBack = new ImageView(cardBack);
     }
 
     /*
