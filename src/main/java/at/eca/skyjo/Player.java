@@ -118,6 +118,7 @@ public class Player {
 
 
 
+
     public void threeOfAKind(TrayDeck tray){
         if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
                 (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())){
@@ -129,6 +130,7 @@ public class Player {
 
         } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
                 (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
+
 
             Card replaceCard = new Card(true);
             swapCard(replaceCard,1, tray);

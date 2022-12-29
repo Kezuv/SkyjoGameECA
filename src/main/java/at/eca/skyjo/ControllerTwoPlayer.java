@@ -179,6 +179,11 @@ public class ControllerTwoPlayer implements Initializable {
         deck.swap(player, cardNumber);
         playerButton.setGraphic(player.getCard(cardNumber).getCardViewImage());
         deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+        if(player == player1) {
+            labelScorePlayer1.setText(player1.scoreToString());
+        } else if (player == player2) {
+            labelScorePlayer2.setText(player2.scoreToString());
+        }
     }
 
     // CardButtons Player 1
