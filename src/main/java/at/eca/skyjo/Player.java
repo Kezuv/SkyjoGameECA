@@ -47,13 +47,11 @@ public class Player {
     }
 
 
-    public void swapCard(Card card, int place, TrayDeck tray) {
-        Card swapped = hand.get(place);
-        hand.set(place, card);
-        tray.addCardtoTray(swapped);
-        threeOfAKind(tray);
+    public void flipAllCards(){
+        for (int i = 0; i < hand.size(); i ++){
+            hand.get(i).flip();
+        }
     }
-
     public void addToScore(int value) {
         score += value;
     }
@@ -66,8 +64,8 @@ public class Player {
         return name;
     }
 
-    public String scoreToString(){
-        int values =  0;
+    public String scoreToString() {
+        int values = 0;
         int notVisible = 0;
 
         for (Card toCheck : hand) {
@@ -80,24 +78,25 @@ public class Player {
         return "" + values + " Points + " + notVisible + " not visible.";
     }
 
-    public boolean checkIfFinished(){
+    public boolean checkIfFinished() {
         int checkBoolean = 0;
-        for (int i = 0; i < hand.size(); i++){
-            if (!hand.get(i).isFaceUp()){
-                checkBoolean ++;
+        for (int i = 0; i < hand.size(); i++) {
+            if (!hand.get(i).isFaceUp()) {
+                checkBoolean++;
             }
         }
-        if (checkBoolean!=0){
+        if (checkBoolean != 0) {
             return false;
         } else {
             return true;
         }
     }
 
-    public Card getCard (int cardPosition){
+    public Card getCard(int cardPosition) {
         return hand.get(cardPosition);
     }
-    public void setCard (int cardPosition, Card card) {
+
+    public void setCard(int cardPosition, Card card) {
         hand.set(cardPosition, card);
 
     }
@@ -114,33 +113,24 @@ public class Player {
     }
 
 
-
-
-
-
-
-    public void threeOfAKind(TrayDeck tray){
+    public void threeOfAKind() {
         if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
-                (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())){
+                (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())) {
 
             Card replaceCard = new Card(true);
-            swapCard(replaceCard,0, tray);
-            swapCard(replaceCard,4,tray);
-            swapCard(replaceCard,8,tray);
+
 
         } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
                 (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
 
 
             Card replaceCard = new Card(true);
-            swapCard(replaceCard,1, tray);
-            swapCard(replaceCard,5,tray);
-            swapCard(replaceCard,9,tray);
+
         } //else if () {
 
-      //  } else if () {
+        //  } else if () {
 
-      //  }
+        //  }
 
     }
 }
