@@ -128,11 +128,6 @@ public class ControllerTwoPlayer implements Initializable {
     Player player2 = gameTwoPlayer.getPlayers(1);
 
 
-    @FXML
-    private Button deckImgFaceDown;
-
-    @FXML
-    private Button deckImgFaceUp;
 
 
     // ================== methoden ========================
