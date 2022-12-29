@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Player {
     private String name;
-    private List<Card> hand;
+    private final List<Card> hand;
     private Image cardBackground;
     private ImageView cardViewBackground;
     private List<ImageView> cardBack = new ArrayList<>();
@@ -62,16 +62,16 @@ public class Player {
 
     public String scoreToString(){
         int values =  0;
-        int notvisible = 0;
+        int notVisible = 0;
 
-        for (Card tocheck : hand) {
-            if (!tocheck.isFaceUp()) {
-                notvisible = notvisible + 1;
+        for (Card toCheck : hand) {
+            if (!toCheck.isFaceUp()) {
+                notVisible = notVisible + 1;
             } else {
-                values = values + tocheck.getValue();
+                values = values + toCheck.getValue();
             }
         }
-        return "" + values + " Points + " + notvisible + " not visible.";
+        return "" + values + " Points + " + notVisible + " not visible.";
     }
 
     public boolean checkIfFinished(){
@@ -90,6 +90,10 @@ public class Player {
 
     public Card getCard (int cardPosition){
         return hand.get(cardPosition);
+    }
+    public void setCard (int cardPosition, Card card) {
+        hand.set(cardPosition, card);
+
     }
 
     public List<Card> getHand() {
