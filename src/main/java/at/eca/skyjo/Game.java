@@ -93,13 +93,10 @@ public class Game {
                 return isPlaying;}
 
             }
-            if (finalround == hasPlayed){
-                movesLeft = 0;
-                canPickUp = false;
-                return finalround;
-            }
+            movesLeft = 0;
+            canPickUp = false;
+            return finalround;
         }
-        return 99; // = Fehler bei abfrage;
     }
 
     public Game(int playerCount) {

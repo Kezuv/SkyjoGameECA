@@ -80,16 +80,11 @@ public class Player {
 
     public boolean checkIfFinished() {
         int checkBoolean = 0;
-        for (int i = 0; i < hand.size(); i++) {
-            if (!hand.get(i).isFaceUp()) {
-                checkBoolean++;
+        for (int i = 0; i < hand.size(); i ++){
+            if (hand.get(i).isFaceUp()){
+                checkBoolean ++;
             }
-        }
-        if (checkBoolean != 0) {
-            return false;
-        } else {
-            return true;
-        }
+        } return checkBoolean == 12;
     }
 
     public Card getCard(int cardPosition) {
