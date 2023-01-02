@@ -15,7 +15,9 @@ public class Card {
 
 
     public ImageView getCardViewImage() {
-        return cardViewImage;
+        if (isFaceUp()){
+        return cardViewImage;}
+        else {return cardViewBack;}
     }
 
     public Card(int value) {
@@ -28,21 +30,6 @@ public class Card {
         cardViewBack = new ImageView(cardBack);
     }
 
-    /*
-    public Card(int value, boolean face) {
-        this.value = value;
-        if (face) {
-            String fileName = "Card_" + value + ".png";
-            cardImage = new Image("/at/eca/skyjo/img/" + fileName);
-            cardViewImage = new ImageView(cardImage);
-        } else {
-            cardBack = new Image("/at/eca/skyjo/img/cardBackground.png");
-            cardViewBack = new ImageView(cardBack);
-        }
-    }
-
-     */
-
     public Card(boolean willBeReplaced) {
         this.value = 0;
         this.faceUp = true;
@@ -50,7 +37,7 @@ public class Card {
     }
 
     public void flip() {
-        this.faceUp = !this.faceUp;
+        this.faceUp = true;
     }
 
     public boolean isFaceUp(){
@@ -64,13 +51,10 @@ public class Card {
         return cardImage;
    }
 
-
-
-
-    @Override
-    public String toString() {
-        return "" + value;
-    }
+    //@Override
+   // public String toString() {
+    //    return "" + value;
+   // }
 
 
 }

@@ -30,12 +30,11 @@ public class Player {
         this.name = name;
         hand = new ArrayList<Card>();
         dealCards(deck);
-        for (int i = 1; i <= 12; i++) {
-            cardBackground = new Image("/at/eca/skyjo/img/cardBackground.png");
-            cardViewBackground = new ImageView(cardBackground);
-            cardBack.add(cardViewBackground);
-        }
-
+       // for (int i = 1; i <= 12; i++) {
+        //    cardBackground = new Image("/at/eca/skyjo/img/cardBackground.png");
+        //    cardViewBackground = new ImageView(cardBackground);
+        //    cardBack.add(cardViewBackground);
+        //}
         this.score = 0;
     }
 

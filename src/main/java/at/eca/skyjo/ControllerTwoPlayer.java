@@ -158,7 +158,7 @@ public class ControllerTwoPlayer implements Initializable {
             if (gameTwoPlayer.canPickUp) {
                 if (e.getButton() == MouseButton.PRIMARY) {
                     deck.addDeckToDiscardPile();
-                    deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+                    deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());
                     labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
                     labelCardsLeftDiscard.setText(String.valueOf("Cards in the discard pile: " + deck.getSizeDiscardPile()));
                     gameTwoPlayer.canPickUp = false;
@@ -173,7 +173,7 @@ public class ControllerTwoPlayer implements Initializable {
         deck.swap(player, cardNumber);
         gameTwoPlayer.canPickUp = false;
         playerButton.setGraphic(player.getCard(cardNumber).getCardViewImage());
-        deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+        deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());
         if(player == player1) {
             labelScorePlayer1.setText(player1.scoreToString());
         } else if (player == player2) {
@@ -245,11 +245,13 @@ public class ControllerTwoPlayer implements Initializable {
 
     // Players Table Setup
     public void player1Table(int cardNumber, Button playerButton){
-        playerButton.setGraphic((Node) player1.getCard(cardNumber).getCardViewImage());
+        player1.getCard(cardNumber).flip();
+        playerButton.setGraphic(player1.getCard(cardNumber).getCardViewImage());
         labelScorePlayer1.setText(player1.scoreToString());
     }
     public void player2Table(int cardNumber, Button playerButton){
-        playerButton.setGraphic((Node) player2.getCard(cardNumber).getCardViewImage());
+        player2.getCard(cardNumber).flip();
+        playerButton.setGraphic(player2.getCard(cardNumber).getCardViewImage());
         labelScorePlayer2.setText(player2.scoreToString());
     }
 
@@ -341,9 +343,8 @@ public class ControllerTwoPlayer implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        deck.getDiscardPile().add(0,deck.getCards().remove(0));
-        deckImgFaceDown.setGraphic((Node) deck.getCardBack().get(24));
-        deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
+        deck.addToDiscardPile();
+
 
 
         labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
@@ -362,32 +363,34 @@ public class ControllerTwoPlayer implements Initializable {
 
         player1Turn.setText(""+player1.getName() + " ist am Zug!");
 
+        deckImgFaceDown.setGraphic(deck.getCardViewBackground());
+        deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());
 
-        p1c0.setGraphic((Node) deck.getCardBack().get(0));
-        p1c1.setGraphic((Node) deck.getCardBack().get(1));
-        p1c2.setGraphic((Node) deck.getCardBack().get(2));
-        p1c3.setGraphic((Node) deck.getCardBack().get(3));
-        p1c4.setGraphic((Node) deck.getCardBack().get(4));
-        p1c5.setGraphic((Node) deck.getCardBack().get(5));
-        p1c6.setGraphic((Node) deck.getCardBack().get(6));
-        p1c7.setGraphic((Node) deck.getCardBack().get(7));
-        p1c8.setGraphic((Node) deck.getCardBack().get(8));
-        p1c9.setGraphic((Node) deck.getCardBack().get(9));
-        p1c10.setGraphic((Node) deck.getCardBack().get(10));
-        p1c11.setGraphic((Node) deck.getCardBack().get(11));
+        p1c0.setGraphic(player1.getCard(0).getCardViewImage());
+        p1c1.setGraphic(player1.getCard(1).getCardViewImage());
+        p1c2.setGraphic(player1.getCard(2).getCardViewImage());
+        p1c3.setGraphic(player1.getCard(3).getCardViewImage());
+        p1c4.setGraphic(player1.getCard(4).getCardViewImage());
+        p1c5.setGraphic(player1.getCard(5).getCardViewImage());
+        p1c6.setGraphic(player1.getCard(6).getCardViewImage());
+        p1c7.setGraphic(player1.getCard(7).getCardViewImage());
+        p1c8.setGraphic(player1.getCard(8).getCardViewImage());
+        p1c9.setGraphic(player1.getCard(9).getCardViewImage());
+        p1c10.setGraphic(player1.getCard(10).getCardViewImage());
+        p1c11.setGraphic(player1.getCard(11).getCardViewImage());
 
-        p2c0.setGraphic((Node) deck.getCardBack().get(12));
-        p2c1.setGraphic((Node) deck.getCardBack().get(13));
-        p2c2.setGraphic((Node) deck.getCardBack().get(14));
-        p2c3.setGraphic((Node) deck.getCardBack().get(15));
-        p2c4.setGraphic((Node) deck.getCardBack().get(16));
-        p2c5.setGraphic((Node) deck.getCardBack().get(17));
-        p2c6.setGraphic((Node) deck.getCardBack().get(18));
-        p2c7.setGraphic((Node) deck.getCardBack().get(19));
-        p2c8.setGraphic((Node) deck.getCardBack().get(20));
-        p2c9.setGraphic((Node) deck.getCardBack().get(21));
-        p2c10.setGraphic((Node) deck.getCardBack().get(22));
-        p2c11.setGraphic((Node) deck.getCardBack().get(23));
+        p2c0.setGraphic(player2.getCard(0).getCardViewImage());
+        p2c1.setGraphic(player2.getCard(1).getCardViewImage());
+        p2c2.setGraphic(player2.getCard(2).getCardViewImage());
+        p2c3.setGraphic(player2.getCard(3).getCardViewImage());
+        p2c4.setGraphic(player2.getCard(4).getCardViewImage());
+        p2c5.setGraphic(player2.getCard(5).getCardViewImage());
+        p2c6.setGraphic(player2.getCard(6).getCardViewImage());
+        p2c7.setGraphic(player2.getCard(7).getCardViewImage());
+        p2c8.setGraphic(player2.getCard(8).getCardViewImage());
+        p2c9.setGraphic(player2.getCard(9).getCardViewImage());
+        p2c10.setGraphic(player2.getCard(10).getCardViewImage());
+        p2c11.setGraphic(player2.getCard(11).getCardViewImage());
 
 
         //imgRulesBtn.setGraphic(viewRulesBtn);
