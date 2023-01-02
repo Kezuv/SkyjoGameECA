@@ -16,7 +16,7 @@ public class Game {
     boolean firstRound = true;
     int isPlaying = 1;
     int movesLeft = 2;
-    int finalround = 0;
+    int finalround = 99;
     boolean canPickUp = false;
 
 
@@ -38,6 +38,10 @@ public class Game {
 
     public int gamePlay (Player player, int hasPlayed) {
         int maxPlayer = players.size();
+        int whoWins = (hasPlayed+1);
+            if (whoWins > players.size()){
+                whoWins = 1;
+            }
 
         // Check if FirstRound
         if (firstRound){
@@ -55,10 +59,10 @@ public class Game {
         }
         // End of First Round
         else {
-            if (finalround == 0){
+            if (finalround == 99) {
                 // Player finished?
                 if (player.checkIfFinished()){
-                    finalround = hasPlayed;
+                    finalround = hasPlayed-2;
                     movesLeft = 1;
                     canPickUp = true;
                     if (hasPlayed == maxPlayer){
@@ -82,21 +86,23 @@ public class Game {
                 } // End of the Game!
                 // Player finished ended.
             }
-            if (finalround !=hasPlayed){
+            if (finalround != 0){
                 player.flipAllCards();
                 movesLeft = 1;
+                finalround --;
                 canPickUp = true;
                 if (hasPlayed == maxPlayer){
                     isPlaying = 1;
                     return isPlaying;
                 } else { isPlaying = (hasPlayed+1);
                 return isPlaying;}
-
             }
-            movesLeft = 0;
-            canPickUp = false;
-            return finalround;
+            if (finalround == 0 ){
+                movesLeft = 0;
+                canPickUp = false;
+                return 0;}
         }
+        return 99;
     }
 
     public Game(int playerCount) {

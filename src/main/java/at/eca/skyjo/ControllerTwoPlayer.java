@@ -96,7 +96,10 @@ public class ControllerTwoPlayer implements Initializable {
     private Label labelCardsLeftDeck;
     @FXML
     private Label labelCardsLeftDiscard;
-
+    @FXML
+    private Label labelPlayer1Name;
+    @FXML
+    private Label labelPlayer2Name;
     @FXML
     private Label labelInstructions;
 
@@ -343,7 +346,7 @@ public class ControllerTwoPlayer implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        deck.addToDiscardPile();
+        deck.addDeckToDiscardPile();
 
 
 
@@ -352,6 +355,8 @@ public class ControllerTwoPlayer implements Initializable {
         labelInstructions.setText("Each player reveals two of their cards. The player with the highest total begins the first round.");
         labelScorePlayer1.setText(player1.scoreToString());
         labelScorePlayer2.setText(player2.scoreToString());
+        labelPlayer1Name.setText(player1.getName());
+        labelPlayer2Name.setText(player2.getName());
         labelWhoIsPlaying.setText("");
 
         System.out.println("===================================================================");
@@ -361,7 +366,10 @@ public class ControllerTwoPlayer implements Initializable {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Player Hand: " + player1.getHand());
 
+
+
         player1Turn.setText(""+player1.getName() + " ist am Zug!");
+        player2Turn.setText("");
 
         deckImgFaceDown.setGraphic(deck.getCardViewBackground());
         deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());

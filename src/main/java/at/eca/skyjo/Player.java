@@ -28,7 +28,7 @@ public class Player {
 
     public Player(String name, Deck deck) {
         this.name = name;
-        hand = new ArrayList<Card>();
+        hand = new ArrayList<Card>(12);
         dealCards(deck);
        // for (int i = 1; i <= 12; i++) {
         //    cardBackground = new Image("/at/eca/skyjo/img/cardBackground.png");
@@ -107,24 +107,24 @@ public class Player {
     }
 
 
-    public void threeOfAKind() {
-        if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
-                (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())) {
+   // public void threeOfAKind() {
+   //     if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
+    //            (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())) {
 
-            Card replaceCard = new Card(true);
-
-
-        } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
-                (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
+    //        Card replaceCard = new Card(true);
 
 
-            Card replaceCard = new Card(true);
+    //    } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
+      //          (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
 
-        } //else if () {
+
+      //      Card replaceCard = new Card(true);
+
+     //   } //else if () {
 
         //  } else if () {
 
         //  }
 
-    }
+    //}
 }

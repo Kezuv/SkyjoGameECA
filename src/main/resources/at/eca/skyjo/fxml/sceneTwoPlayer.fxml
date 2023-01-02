@@ -11,15 +11,19 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Label fx:id="labelPlayerOneName" text="Player 1" />
+                  <Label fx:id="labelPlayer1Name" text="Player 1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
                   <Label fx:id="labelScorePlayer1" text="Score: player1">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="10.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="player1Turn" text="Players turn" />
                   <StackPane>
                      <children>
                         <GridPane fx:id="playerOneGridPaneGameTwo" alignment="CENTER" hgap="5.0" maxHeight="266.0" maxWidth="230.0" prefHeight="266.0" prefWidth="230.0" vgap="5.0" StackPane.alignment="CENTER">
@@ -54,38 +58,26 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </StackPane>
-                  <Label fx:id="player1Turn" />
+                  <HBox alignment="CENTER" spacing="20.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER">
                <children>
                   <Label id="headingOne" alignment="CENTER" text="E.C.A Skyjo Game" />
                   <VBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label fx:id="labelCardsLeftDeck" text="Label" textAlignment="CENTER">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelCardsLeftDiscard" text="Label" textAlignment="CENTER">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
                   </VBox>
+                  <Label fx:id="labelWhoIsPlaying" text="WhoIsPlaying" />
                   <Label fx:id="labelInstructions" maxHeight="200.0" maxWidth="200.0" text="Label" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelWhoIsPlaying" text="WhoIsPlaying" />
                   <StackPane>
                      <children>
                         <GridPane alignment="CENTER" hgap="5.0" maxHeight="97.0" maxWidth="125.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="97.0" prefWidth="125.0" vgap="5.0">
@@ -109,25 +101,35 @@
                         <Insets bottom="150.0" top="150.0" />
                      </VBox.margin>
                   </StackPane>
+                  <Label fx:id="labelCardsLeftDiscard" text="Label" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelCardsLeftDeck" text="Label" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                   <Button fx:id="nextPlayerButton" mnemonicParsing="false" onAction="#nextPlayer" text="Next Player" />
-                  <HBox alignment="CENTER" spacing="20.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#buttonGoBackStartScene" text="End Game / Main Menu" />
-                     </children>
-                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#buttonGoBackStartScene" text="End Game / Main Menu" />
                </children>
             </VBox>
             <VBox alignment="CENTER">
                <children>
-                  <Label fx:id="labelPlayerTwoName" text="Player 2" />
+                  <Label fx:id="labelPlayer2Name" text="Player 2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
                   <Label fx:id="labelScorePlayer2" text="Score: player2">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="10.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="player2Turn" text="Players turn" />
                   <StackPane>
                      <children>
                         <GridPane fx:id="playerOneGridPaneGameTwo1" alignment="CENTER" hgap="5.0" maxHeight="266.0" maxWidth="230.0" prefHeight="266.0" prefWidth="230.0" vgap="5.0" StackPane.alignment="CENTER">
@@ -162,7 +164,6 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </StackPane>
-                  <Label fx:id="player2Turn" />
                </children>
             </VBox>
          </children>

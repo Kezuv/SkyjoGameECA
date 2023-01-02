@@ -54,14 +54,12 @@ public class Deck {
         if (cards.isEmpty()) {
             return null;
         }
-        return cards.remove(0);
+
+        Card tmp = cards.get(0);
+        cards.remove(0);
+        return tmp;
     }
 
-    public void addToDiscardPile() {
-        Card tmp = cards.get(0);
-        tmp.flip();
-        discardPile.add(tmp);
-    }
 
     public Card getDiscardCard() {
         return discardPile.get(0);
@@ -105,12 +103,13 @@ public class Deck {
         Card discardCard = discardPile.get(0);
         discardPile.remove(0);
         discardCard.flip();
+
         Card playerCard = player.getCard(cardNumber);
-        playerCard.flip();
         player.getHand().remove(cardNumber);
+        playerCard.flip();
 
         player.getHand().add(cardNumber, discardCard);
-        discardPile.add(playerCard);
+        discardPile.add(0,playerCard);
 
     }
 
@@ -120,7 +119,7 @@ public class Deck {
         Card temp = cards.get(0);
         cards.remove(0);
         temp.flip();
-        discardPile.add(0, temp);
+        discardPile.add(0,temp);
 
     }
 }

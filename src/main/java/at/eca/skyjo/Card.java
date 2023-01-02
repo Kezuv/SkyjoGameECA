@@ -22,7 +22,7 @@ public class Card {
 
     public Card(int value) {
         this.value = value;
-        this.faceUp = false;
+        faceUp = false;
         String fileName = "Card_" + value + ".png";
         cardImage = new Image("/at/eca/skyjo/img/" + fileName);
         cardViewImage = new ImageView(cardImage);
@@ -30,11 +30,6 @@ public class Card {
         cardViewBack = new ImageView(cardBack);
     }
 
-    public Card(boolean willBeReplaced) {
-        this.value = 0;
-        this.faceUp = true;
-   //     this.imgCard = imgCard;
-    }
 
     public void flip() {
         this.faceUp = true;
