@@ -101,25 +101,6 @@ public class ControllerTwoPlayer implements Initializable {
     private Label labelInstructions;
 
 
-
-    // Variablen für den Spielablauf
-
-    // Gibt an ob es sich um die erste Runde hält. Wenn nicht = false
-    boolean firstRound = true;
-    // Gibt an ob es sich um die letzte Runde hälft. Wenn ja = true
-    boolean lastRound = false;
-
-    //Gibt an welcher Spieler am Zug ist (Player 1 = 1, Player 2 = 2 usw.)
-    private int isPlaying = 1;
-
-    //Gibt an wieviel Spielkarten der Spieler noch umdrehen darf (Startet mit 2)
-    private int movesLeft = 2;
-
-    //Gibt an, ob die letze Runde dran ist, und welcher Spieler beendet hat (Player 1 = 1, Player 2 = 2 usw.)
-    private int finalround = 0;
-    // Limitierung fürs abgeben (Wenn abgehoben wurde = false)
-    private boolean pickUp = false;
-
     /*
     @FXML
     Image imgRulesIcon = new Image("/at/eca/skyjo/img/iconRules.png");
@@ -148,69 +129,49 @@ public class ControllerTwoPlayer implements Initializable {
         return player.getCard(cardNumber).getCardViewImage();
     }
 
-    public boolean permissionCheck (Player player){
-        if (player == player1) {
-            if (isPlaying != 1) {
-                return false;
-            } else if (movesLeft == 0) {
-                return false;
-            } else {
-                return true;
-            }
-        } else if (player == player2) {
-            if (isPlaying != 2){
-                return false;
-            } else if (movesLeft == 0) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            System.out.println("ERROR - Fehler bei permissionCheck!");
-            return false;
-        }
 
-    }
 
-    public void clickedButton (Player player, Button button, int cardNumber) throws IOException {
+    public void clickedButton (Player player, int i, Button button, int cardNumber) throws IOException {
         button.setOnMouseClicked(event1 -> {
-            if (permissionCheck(player)) {
+            if (gameTwoPlayer.permissionCheck(player, i)) {
                 if (event1.getButton() == MouseButton.PRIMARY) {
-                    if (!pickUp) {
+                    if (!gameTwoPlayer.canPickUp) {
                         if (player == player1) {
                             player1Table(cardNumber, button);
-                            movesLeft--;
+                            gameTwoPlayer.movesLeft--;
                         } else if (player == player2) {
                             player2Table(cardNumber, button);
-                            movesLeft--;
+                            gameTwoPlayer.movesLeft--;
                         }
                     }
 
                 } else if (event1.getButton() == MouseButton.SECONDARY) {
                     swapHandDiscard(deck, button, player, cardNumber);
-                    movesLeft--;
+                    gameTwoPlayer.movesLeft--;
                 }
             }
         });
     }
 
-    public void pickUpCard(ActionEvent actionEvent) {
+    public void pickUpCardFromDown(ActionEvent actionEvent) {
         deckImgFaceDown.setOnMouseClicked(e -> {
-            if (pickUp) {
+            if (gameTwoPlayer.canPickUp) {
                 if (e.getButton() == MouseButton.PRIMARY) {
                     deck.addDeckToDiscardPile();
                     deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
                     labelCardsLeftDeck.setText(String.valueOf("Cards left in the deck: " + deck.getSizeCards()));
                     labelCardsLeftDiscard.setText(String.valueOf("Cards in the discard pile: " + deck.getSizeDiscardPile()));
-                    pickUp = false;
+                    gameTwoPlayer.canPickUp = false;
                 }
             }
         });
     }
 
+
+
     public void swapHandDiscard(Deck deck, Button playerButton, Player player, int cardNumber) {
         deck.swap(player, cardNumber);
-        pickUp = false;
+        gameTwoPlayer.canPickUp = false;
         playerButton.setGraphic(player.getCard(cardNumber).getCardViewImage());
         deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
         if(player == player1) {
@@ -221,107 +182,25 @@ public class ControllerTwoPlayer implements Initializable {
     }
 
     public void nextPlayer(ActionEvent actionEvent) {
-
-        // Player 1
-        if (firstRound){
-            if (isPlaying == 1){
-                movesLeft = 2;
-                isPlaying = 2;
-                player2Turn.setText("" + player2.getName() + " ist am Zug!");
-                player1Turn.setText("");
-                pickUp = false;
-            } else if (isPlaying == 2) {
-                movesLeft = 1;
-                isPlaying = 1;
-                firstRound = false;
-                player1Turn.setText("" + player1.getName() + " ist am Zug!");
+        switch (gameTwoPlayer.gamePlay(gameTwoPlayer.getPlayers((gameTwoPlayer.isPlaying-1)), gameTwoPlayer.isPlaying)){
+            case 1:
+                player1Turn.setText(""+player1.getName()+" ist am Zug!");
                 player2Turn.setText("");
-                pickUp = true;
-            }
-            // hier mehr else if für die Spieleranzahl einfügen...
-        }
-        // End of First Round
-        else {
-            //Usual Game
-            if (isPlaying == 1) {
-                if (finalround == 0){
-                    //Player 1 finished?
-                    if (player1.checkIfFinished()){
-                        finalround = 1;
-                        movesLeft = 1;
-                        isPlaying = 2;
-                        player2Turn.setText("" + player2.getName() + " ist am Zug!");
-                        player1Turn.setText("");
-                        pickUp = true;
-                    }
-                    // Usual turn to next Player
-                    else {
-                        movesLeft = 1;
-                        isPlaying = 2;
-                        player2Turn.setText("" + player2.getName() + " ist am Zug!");
-                        player1Turn.setText("");
-                        pickUp = true;
-                    }
-                }
-                // Last Round - not initialized by Player 1
-                else if (finalround !=1) {
-                    player1.flipAllCards();
-                    movesLeft = 1;
-                    isPlaying = 2;
-                    player2Turn.setText("" + player2.getName() + " ist am Zug!");
-                    player1Turn.setText("");
-                    pickUp = true;
-                }
-                // Last Round - initialized by Player 1
-                else {
-                    movesLeft = 0;
-                    pickUp = false;
-                    labelWhoIsPlaying.setText("Runde vorbei!");
-                    player2Turn.setText("");
-                    player1Turn.setText("");
-                    // End of Game
-                }
-            }
-            else if (isPlaying == 2) {
-                if (finalround == 0){
-                    //Player 2 finished?
-                    if (player2.checkIfFinished()){
-                        finalround = 1;
-                        movesLeft = 1;
-                        isPlaying = 1;
-                        player1Turn.setText("" + player1.getName() + " ist am Zug!");
-                        player2Turn.setText("");
-                        pickUp = true;
-                    }
-                    // Usual turn to next Player
-                    else {
-                        movesLeft = 1;
-                        isPlaying = 1;
-                        player1Turn.setText("" + player1.getName() + " ist am Zug!");
-                        player2Turn.setText("");
-                        pickUp = true;
-                    }
-                }
-                // Last Round - not initialized by Player 2
-                else if (finalround !=2) {
-                    player1.flipAllCards();
-                    movesLeft = 1;
-                    isPlaying = 1;
-                    player1Turn.setText("" + player1.getName() + " ist am Zug!");
-                    player2Turn.setText("");
-                    pickUp = true;
-                }
-                // Last Round - initialized by Player 2
-                else {
-                    movesLeft = 0;
-                    labelWhoIsPlaying.setText("Runde vorbei!");
-                    player2Turn.setText("");
-                    player1Turn.setText("");
-                    pickUp = false;
-                    // End of Game
-                }
-            }
-            // hier mehr else if für die Spieleranzahl einfügen.
+                break;
+            case 2:
+                player2Turn.setText(""+player2.getName()+" ist am Zug!");
+                player1Turn.setText("");
+                break;
+            case 0:
+                labelWhoIsPlaying.setText(""+gameTwoPlayer.getPlayers(gameTwoPlayer.finalround).getName()+" hat die Runde gewonnen!");
+                player1Turn.setText("");
+                player2Turn.setText("");
+                break;
+            case 99:
+                labelWhoIsPlaying.setText("Fehler beim Gameplay!!!");
+                player2Turn.setText("");
+                player1Turn.setText("");
+                break;
         }
     }
     @FXML
@@ -378,80 +257,80 @@ public class ControllerTwoPlayer implements Initializable {
 
     // CardButtons Player 1
     public void player1Card0(ActionEvent event) throws IOException {
-       clickedButton(player1,p1c0,0);
+       clickedButton(player1,1,p1c0,0);
     }
     public void player1Card1(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c1,1);
+        clickedButton(player1,1,p1c1,1);
     }
     public void player1Card2(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c2,2);
+        clickedButton(player1,1,p1c2,2);
     }
     public void player1Card3(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c3,3);
+        clickedButton(player1,1,p1c3,3);
     }
     public void player1Card4(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c4,4);
+        clickedButton(player1,1,p1c4,4);
     }
     public void player1Card5(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c5,5);
+        clickedButton(player1,1,p1c5,5);
     }
     public void player1Card6(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c6,6);
+        clickedButton(player1,1,p1c6,6);
     }
     public void player1Card7(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c7,7);
+        clickedButton(player1,1,p1c7,7);
     }
     public void player1Card8(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c8,8);
+        clickedButton(player1,1,p1c8,8);
     }
     public void player1Card9(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c9,9);
+        clickedButton(player1,1,p1c9,9);
     }
     public void player1Card10(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c10,10);
+        clickedButton(player1,1,p1c10,10);
     }
     public void player1Card11(ActionEvent event) throws IOException {
-        clickedButton(player1,p1c11,11);
+        clickedButton(player1,1,p1c11,11);
     }
 
 
 
     // CardButtons Player 2
     public void player2Card0(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c0,0);
+        clickedButton(player2,2,p2c0,0);
     }
     public void player2Card1(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c1,1);
+        clickedButton(player2,2,p2c1,1);
     }
     public void player2Card2(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c2,2);
+        clickedButton(player2,2,p2c2,2);
     }
     public void player2Card3(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c3,3);
+        clickedButton(player2,2,p2c3,3);
     }
     public void player2Card4(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c4,4);
+        clickedButton(player2,2,p2c4,4);
     }
     public void player2Card5(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c5,5);
+        clickedButton(player2,2,p2c5,5);
     }
     public void player2Card6(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c6,6);
+        clickedButton(player2,2,p2c6,6);
     }
     public void player2Card7(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c7,7);
+        clickedButton(player2,2,p2c7,7);
     }
     public void player2Card8(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c8,8);
+        clickedButton(player2,2,p2c8,8);
     }
     public void player2Card9(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c9,9);
+        clickedButton(player2,2,p2c9,9);
     }
     public void player2Card10(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c10,10);
+        clickedButton(player2,2,p2c10,10);
     }
     public void player2Card11(ActionEvent event) throws IOException {
-        clickedButton(player2,p2c11,11);
+        clickedButton(player2,2,p2c11,11);
     }
     // +++++++++++++++ END PLAYER ONE Actions ++++++++++++++++++++++++
 

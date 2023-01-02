@@ -100,7 +100,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <Button id="cardBtn" fx:id="deckImgFaceDown" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pickUpCard" prefHeight="87.0" prefWidth="55.0" />
+                              <Button id="cardBtn" fx:id="deckImgFaceDown" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pickUpCardFromDown" prefHeight="87.0" prefWidth="55.0" />
                               <Button id="cardBtn" fx:id="deckImgFaceUp" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="87.0" prefWidth="55.0" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>

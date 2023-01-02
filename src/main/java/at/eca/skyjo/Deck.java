@@ -143,11 +143,17 @@ public class Deck {
         player.getHand().set(0, temp);
 
          */
+        Card discardCard = discardPile.get(0);
+        discardPile.remove(0);
+        Card playerCard = player.getCard(cardNumber);
+        player.getHand().remove(0);
+        player.getHand().add(cardNumber, discardCard);
+        discardPile.add(playerCard);
 
-        temp1.add(0, discardPile.remove(0));
-        temp2.add(0, player.getHand().remove(cardNumber));
-        player.getHand().add(cardNumber, temp1.remove(0));
-        discardPile.add(0, temp2.remove(0));
+        //temp1.add(0, discardPile.remove(0));
+        //temp2.add(0, player.getHand().remove(cardNumber));
+       // player.getHand().add(cardNumber, temp1.remove(0));
+       // discardPile.add(0, temp2.remove(0));
 
 
 
