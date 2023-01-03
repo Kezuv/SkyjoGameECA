@@ -65,12 +65,10 @@ public class Deck {
         return cards.remove(0);
     }
 
-    public Card addToDiscardPile() {
-        if (cards.isEmpty()) {
-            return null;
-        }
+    public void addToDiscardPile() {
+
         discardPile.add(cards.remove(0));
-        return discardPile.get(0);
+        //return discardPile.get(0);
     }
 
     public Card getDiscardCard() {
@@ -149,10 +147,13 @@ public class Deck {
         player.getHand().add(cardNumber, temp1.remove(0));
         discardPile.add(0, temp2.remove(0));
 
+        player.addToScore(cardNumber);
 
 
 
     }
+
+
 
     public void addDeckToDiscardPile() {
 
