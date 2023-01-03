@@ -73,6 +73,10 @@ public class Deck {
         return cards;
     }
 
+    public void addOnDiscardPile(Card card){
+        discardPile.add(0,card);
+    }
+
     public void printDeck() {
         for (Card card : cards) {
             System.out.println(card);

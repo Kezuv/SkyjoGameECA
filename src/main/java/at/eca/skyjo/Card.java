@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 public class Card {
     private int value;
     private boolean faceUp;
+    private boolean locked;
 
     private Image cardImage;
     private Image cardBack;
@@ -23,6 +24,7 @@ public class Card {
     public Card(int value) {
         this.value = value;
         faceUp = false;
+        locked = false;
         String fileName = "Card_" + value + ".png";
         cardImage = new Image("/at/eca/skyjo/img/" + fileName);
         cardViewImage = new ImageView(cardImage);
@@ -30,6 +32,12 @@ public class Card {
         cardViewBack = new ImageView(cardBack);
     }
 
+    public Card(boolean locked) {
+        this.locked = locked;
+        faceUp = true;
+        value = 0;
+        cardViewImage = new ImageView();
+    }
 
     public void flip() {
         this.faceUp = true;
@@ -42,14 +50,12 @@ public class Card {
         return this.value;
     }
 
-   public Image getCardImage() {
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public Image getCardImage() {
         return cardImage;
    }
-
-    //@Override
-   // public String toString() {
-    //    return "" + value;
-   // }
-
 
 }

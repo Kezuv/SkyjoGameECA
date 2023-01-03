@@ -136,7 +136,7 @@ public class ControllerTwoPlayer implements Initializable {
 
     public void clickedButton (Player player, int i, Button button, int cardNumber) throws IOException {
         button.setOnMouseClicked(event1 -> {
-            if (gameTwoPlayer.permissionCheck(player, i)) {
+            if (gameTwoPlayer.permissionCheck(player, i, cardNumber)) {
                 if (event1.getButton() == MouseButton.PRIMARY) {
                     if (!gameTwoPlayer.canPickUp) {
                         if (player == player1) {
@@ -189,20 +189,24 @@ public class ControllerTwoPlayer implements Initializable {
             case 1:
                 player1Turn.setText(""+player1.getName()+" ist am Zug!");
                 player2Turn.setText("");
+                refresh();
                 break;
             case 2:
                 player2Turn.setText(""+player2.getName()+" ist am Zug!");
                 player1Turn.setText("");
+                refresh();
                 break;
             case 0:
                 labelWhoIsPlaying.setText(""+gameTwoPlayer.getPlayers(gameTwoPlayer.finalround).getName()+" hat die Runde gewonnen!");
                 player1Turn.setText("");
                 player2Turn.setText("");
+                refresh();
                 break;
             case 99:
                 labelWhoIsPlaying.setText("Fehler beim Gameplay!!!");
                 player2Turn.setText("");
                 player1Turn.setText("");
+                refresh();
                 break;
         }
     }
@@ -219,6 +223,35 @@ public class ControllerTwoPlayer implements Initializable {
 
     }
 
+    public void refresh(){
+        deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());
+
+        p1c0.setGraphic(player1.getCard(0).getCardViewImage());
+        p1c1.setGraphic(player1.getCard(1).getCardViewImage());
+        p1c2.setGraphic(player1.getCard(2).getCardViewImage());
+        p1c3.setGraphic(player1.getCard(3).getCardViewImage());
+        p1c4.setGraphic(player1.getCard(4).getCardViewImage());
+        p1c5.setGraphic(player1.getCard(5).getCardViewImage());
+        p1c6.setGraphic(player1.getCard(6).getCardViewImage());
+        p1c7.setGraphic(player1.getCard(7).getCardViewImage());
+        p1c8.setGraphic(player1.getCard(8).getCardViewImage());
+        p1c9.setGraphic(player1.getCard(9).getCardViewImage());
+        p1c10.setGraphic(player1.getCard(10).getCardViewImage());
+        p1c11.setGraphic(player1.getCard(11).getCardViewImage());
+
+        p2c0.setGraphic(player2.getCard(0).getCardViewImage());
+        p2c1.setGraphic(player2.getCard(1).getCardViewImage());
+        p2c2.setGraphic(player2.getCard(2).getCardViewImage());
+        p2c3.setGraphic(player2.getCard(3).getCardViewImage());
+        p2c4.setGraphic(player2.getCard(4).getCardViewImage());
+        p2c5.setGraphic(player2.getCard(5).getCardViewImage());
+        p2c6.setGraphic(player2.getCard(6).getCardViewImage());
+        p2c7.setGraphic(player2.getCard(7).getCardViewImage());
+        p2c8.setGraphic(player2.getCard(8).getCardViewImage());
+        p2c9.setGraphic(player2.getCard(9).getCardViewImage());
+        p2c10.setGraphic(player2.getCard(10).getCardViewImage());
+        p2c11.setGraphic(player2.getCard(11).getCardViewImage());
+    }
     /*
     public void buttonRulesChangeScene(ActionEvent event) throws IOException {
 
