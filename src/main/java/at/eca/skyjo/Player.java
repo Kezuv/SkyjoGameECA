@@ -77,6 +77,20 @@ public class Player {
         return "" + values + " Points + " + notVisible + " not visible.";
     }
 
+    public int startUpPoints() {
+        int values = 0;
+        int notVisible = 0;
+
+        for (Card toCheck : hand) {
+            if (!toCheck.isFaceUp()) {
+                notVisible = notVisible + 1;
+            } else {
+                values = values + toCheck.getValue();
+            }
+        }
+        return values;
+    }
+
     public boolean checkIfFinished() {
         int checkBoolean = 0;
         for (int i = 0; i < hand.size(); i ++){

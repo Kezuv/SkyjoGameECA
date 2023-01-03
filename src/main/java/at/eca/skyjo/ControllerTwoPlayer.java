@@ -136,25 +136,28 @@ public class ControllerTwoPlayer implements Initializable {
 
     public void clickedButton (Player player, int i, Button button, int cardNumber) throws IOException {
         button.setOnMouseClicked(event1 -> {
-            if (gameTwoPlayer.permissionCheck(player, i, cardNumber)) {
                 if (event1.getButton() == MouseButton.PRIMARY) {
-                    if (!gameTwoPlayer.canPickUp) {
-                        if (player == player1) {
-                            player1Table(cardNumber, button);
-                            gameTwoPlayer.movesLeft--;
-                        } else if (player == player2) {
-                            player2Table(cardNumber, button);
-                            gameTwoPlayer.movesLeft--;
+                    if (gameTwoPlayer.permissionCheck(player, i, cardNumber)) {
+                        if (!gameTwoPlayer.canPickUp) {
+                            if (player == player1) {
+                                player1Table(cardNumber, button);
+                                gameTwoPlayer.movesLeft--;
+                            } else if (player == player2) {
+                                player2Table(cardNumber, button);
+                                gameTwoPlayer.movesLeft--;
+                            }
                         }
                     }
 
                 } else if (event1.getButton() == MouseButton.SECONDARY) {
-                    swapHandDiscard(deck, button, player, cardNumber);
-                    gameTwoPlayer.movesLeft--;
-                }
-            }
-        });
-    }
+                        if (gameTwoPlayer.permissionCheck(player, i, cardNumber)) {
+                            swapHandDiscard(deck, button, player, cardNumber);
+                            gameTwoPlayer.movesLeft--;
+                        }
+
+                    }
+            });
+        }
 
     public void pickUpCardFromDown(ActionEvent actionEvent) {
         deckImgFaceDown.setOnMouseClicked(e -> {
@@ -185,22 +188,26 @@ public class ControllerTwoPlayer implements Initializable {
     }
 
     public void nextPlayer(ActionEvent actionEvent) {
+
         switch (gameTwoPlayer.gamePlay(gameTwoPlayer.getPlayers((gameTwoPlayer.isPlaying-1)), gameTwoPlayer.isPlaying)){
             case 1:
                 player1Turn.setText(""+player1.getName()+" ist am Zug!");
                 player2Turn.setText("");
                 refresh();
+                instructionLabelSetup();
                 break;
             case 2:
                 player2Turn.setText(""+player2.getName()+" ist am Zug!");
                 player1Turn.setText("");
                 refresh();
+                instructionLabelSetup();
                 break;
             case 0:
-                labelWhoIsPlaying.setText(""+gameTwoPlayer.getPlayers(gameTwoPlayer.finalround).getName()+" hat die Runde gewonnen!");
+                labelWhoIsPlaying.setText(""+gameTwoPlayer.getPlayers(gameTwoPlayer.finalround).getName()+" has won the round!");
                 player1Turn.setText("");
                 player2Turn.setText("");
                 refresh();
+                instructionLabelSetup();
                 break;
             case 99:
                 labelWhoIsPlaying.setText("Fehler beim Gameplay!!!");
@@ -209,6 +216,41 @@ public class ControllerTwoPlayer implements Initializable {
                 refresh();
                 break;
         }
+    }
+
+    public void instructionLabelSetup(){
+        if (gameTwoPlayer.firstRound){
+            labelInstructions.setText("Each player reveals two of their cards. The player with the highest total begins the first round.");
+        }
+        if (!gameTwoPlayer.firstRound && (gameTwoPlayer.finalround == 99)){
+                if (gameTwoPlayer.isPlaying == 1) {
+                    if (gameTwoPlayer.canPickUp) {
+                        labelInstructions.setText("" + player1.getName() + " can swap with the discard card or pick up a new one.");
+                    } else {
+                        labelInstructions.setText("" + player1.getName() + " can swap with the discard card or flip one.");
+                    }
+                }
+                if (gameTwoPlayer.isPlaying == 2) {
+                    if (gameTwoPlayer.canPickUp) {
+                        labelInstructions.setText("" + player2.getName() + " can swap with the discard card or pick up a new one.");
+                    } else {
+                        labelInstructions.setText("" + player2.getName() + " can swap with the discard card or flip one.");
+                    }
+                }
+        } else {
+            if (gameTwoPlayer.isPlaying == 1 && (gameTwoPlayer.isPlaying != gameTwoPlayer.finalround)) {
+                labelInstructions.setText("Last round! " + player1.getName() + " can make the last moves.");
+            }
+            if (gameTwoPlayer.isPlaying == 2 && (gameTwoPlayer.isPlaying != gameTwoPlayer.finalround)) {
+                labelInstructions.setText("Last round! " + player2.getName() + " can make the last moves.");
+            }
+
+            if (gameTwoPlayer.isPlaying == gameTwoPlayer.finalround){
+                labelInstructions.setText("Round is over! \n " + player1.getName() + " total Score: " + player1.getScore() + "\n"
+                        + player2.getName() + " total Score: " + player2.getScore());
+            }
+        }
+
     }
     @FXML
     public void buttonGoBackStartScene(ActionEvent event) throws IOException {

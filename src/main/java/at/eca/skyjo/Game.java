@@ -53,7 +53,18 @@ public class Game {
                 return isPlaying;
             } else {
                 movesLeft = 1;
-                isPlaying = 1;
+                int maxPlayerPoints = players.get(maxPlayer-1).startUpPoints();
+                int nextPlayer = maxPlayer;
+                for (int i = (maxPlayer-1); i >= 0; i--){
+                    if (maxPlayerPoints < players.get(i).startUpPoints()) {
+                        maxPlayerPoints = players.get(i).startUpPoints();
+                        nextPlayer = (i + 1);
+                    }
+                    if (maxPlayerPoints == players.get(i).startUpPoints()){
+                        nextPlayer = (i+1);
+                    }
+                }
+                isPlaying = nextPlayer;
                 firstRound = false;
                 canPickUp = true;
                 return isPlaying;
