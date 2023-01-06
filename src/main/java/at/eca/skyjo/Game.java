@@ -1,8 +1,7 @@
 package at.eca.skyjo;
 
-import javafx.event.ActionEvent;
-
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
@@ -10,8 +9,6 @@ public class Game {
 
     private List<Player> players;
     private Deck deck;
-    private TrayDeck trayDeck;
-    private Player currentPlayer;
 
     boolean firstRound = true;
     int isPlaying = 1;
@@ -39,13 +36,7 @@ public class Game {
     }
 
     public int gamePlay (Player player, int hasPlayed) {
-
         int maxPlayer = players.size();
-        int whoWins = (hasPlayed+1);
-            if (whoWins > players.size()){
-                whoWins = 1;
-            }
-
         // Check if FirstRound
         if (firstRound){
             if (isPlaying != maxPlayer){
@@ -77,7 +68,11 @@ public class Game {
                 // Player finished?
                 if (player.checkIfFinished()){
                     threeOfAKind(player);
-                    finalround = hasPlayed-2;
+                    if (maxPlayer == hasPlayed){
+                        finalround = (hasPlayed-1);
+                    }else {
+                        finalround = (maxPlayer - hasPlayed);
+                    }
                     movesLeft = 1;
                     canPickUp = true;
                     if (hasPlayed == maxPlayer){
@@ -105,30 +100,46 @@ public class Game {
             if (finalround != 0){
                 player.flipAllCards();
                 threeOfAKind(player);
-                movesLeft = 1;
                 finalround --;
-                canPickUp = true;
-                if (hasPlayed == maxPlayer){
-                    isPlaying = 1;
-                    return isPlaying;
-                } else { isPlaying = (hasPlayed+1);
-                return isPlaying;}
+                if (finalround == 0 ){
+                    movesLeft = 0;
+                    canPickUp = false;
+                    return 0;}
+                else {
+                    movesLeft = 1;
+                    canPickUp = true;
+                    if (hasPlayed == maxPlayer) {
+                        isPlaying = 1;
+                        return isPlaying;
+                    } else {
+                        isPlaying = (hasPlayed + 1);
+                        return isPlaying;
+                    }
+                }
             }
-            if (finalround == 0 ){
-                movesLeft = 0;
-                canPickUp = false;
-                return 0;}
+
         }
         return 99;
+    }
+
+    public int whoWonTheRound(){
+        int maxScore = 500;
+        int hasWonTheRound=0;
+        for (int i = 0; i < players.size(); i ++){
+            if (maxScore > players.get(i).getScore()){
+                maxScore = players.get(i).getScore();
+                hasWonTheRound = i;
+            }
+        }
+        return hasWonTheRound;
     }
 
     public Game(int playerCount) {
         players = new ArrayList<>();
         deck = new Deck();
-        trayDeck = new TrayDeck();
 
         for (int i = 1; i < (playerCount+1); i++) {
-            players.add(new Player("Spieler " + i, this.deck));
+            players.add(new Player("Player " + i, this.deck));
         }
 
     }
@@ -198,4 +209,101 @@ public class Game {
         return deck;
     }
 
+    public String whoIsPlayingText(){
+        return "It is "+players.get(isPlaying-1).getName()+"'s turn!";
+    }
+
+    public String instructionLabelText(){
+        if (firstRound){
+                return "" + players.get(isPlaying - 1).getName() + " have to reveal two cards.\n" +
+                        "The player with the highest score begins the first round!";
+        }
+        else if (finalround == 99){
+            if (canPickUp) {
+            return ""+players.get(isPlaying-1).getName()+" can swap with the discard card \n"+
+                    "or pick up a new one";
+            } else if (movesLeft != 0) {
+                return "" + players.get(isPlaying - 1).getName() + " can swap with the discard card \n" +
+                        "or flip one of your own.";
+            } else {
+                return "" + players.get(isPlaying - 1).getName() + " you finished your turn.\n" +
+                        "Please press the \"Next Player\" - Button!";
+            }
+        }
+        else if (finalround == 0) {
+            switch (players.size()){
+                case 2:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString();
+                case 3:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString();
+                case 4:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString()+"\n"+
+                            players.get(3).getName()+" "+ players.get(3).getTotalScoreToString();
+                case 5:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString()+"\n"+
+                            players.get(3).getName()+" "+ players.get(3).getTotalScoreToString()+"\n"+
+                            players.get(4).getName()+" "+ players.get(4).getTotalScoreToString();
+                case 6:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString()+"\n"+
+                            players.get(3).getName()+" "+ players.get(3).getTotalScoreToString()+"\n"+
+                            players.get(4).getName()+" "+ players.get(4).getTotalScoreToString()+"\n"+
+                            players.get(5).getName()+" "+ players.get(5).getTotalScoreToString();
+                case 7:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString()+"\n"+
+                            players.get(3).getName()+" "+ players.get(3).getTotalScoreToString()+"\n"+
+                            players.get(4).getName()+" "+ players.get(4).getTotalScoreToString()+"\n"+
+                            players.get(5).getName()+" "+ players.get(5).getTotalScoreToString()+"\n"+
+                            players.get(6).getName()+" "+ players.get(6).getTotalScoreToString();
+                case 8:
+                    return "Round is over! \n"+
+                            players.get(whoWonTheRound()).getName()+" has won this round! \n"+
+                            players.get(0).getName()+" "+ players.get(0).getTotalScoreToString()+"\n"+
+                            players.get(1).getName()+" "+ players.get(1).getTotalScoreToString()+"\n"+
+                            players.get(2).getName()+" "+ players.get(2).getTotalScoreToString()+"\n"+
+                            players.get(3).getName()+" "+ players.get(3).getTotalScoreToString()+"\n"+
+                            players.get(4).getName()+" "+ players.get(4).getTotalScoreToString()+"\n"+
+                            players.get(5).getName()+" "+ players.get(5).getTotalScoreToString()+"\n"+
+                            players.get(6).getName()+" "+ players.get(6).getTotalScoreToString()+"\n"+
+                            players.get(7).getName()+" "+ players.get(7).getTotalScoreToString();
+            }
+        } else {
+            if (canPickUp) {
+                return "Final round! \n"
+                        +players.get(isPlaying-1).getName()+" can swap with the discard card \n"+
+                        "or pick up a new one the last time!";
+            } else if (movesLeft != 0){
+                return "Final round! \n"
+                        +players.get(isPlaying-1).getName()+" can swap with the discard card \n"+
+                        "or flip one of your own the last time!";
+            } else {
+                return "" + players.get(isPlaying - 1).getName() + " you finished your turn.\n" +
+                        "Please press the \"Next Player\" - Button and see who won this round!";
+            }
+        }
+
+            return "Failure by instructionLabelText - Game Class!";
+    }
 }

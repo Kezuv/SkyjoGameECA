@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Player {
 
@@ -55,7 +54,17 @@ public class Player {
         score += value;
     }
 
-    public int getScore() {
+    public String getTotalScoreToString() {
+        for (Card card : hand) {
+            score = score + card.getValue();
+        }
+        return "total score: " + score;
+    }
+
+    public int getScore(){
+        for (Card card : hand) {
+            score = score + card.getValue();
+        }
         return score;
     }
 
@@ -104,21 +113,10 @@ public class Player {
         return hand.get(cardPosition);
     }
 
-    public void setCard(int cardPosition, Card card) {
-        hand.set(cardPosition, card);
-
-    }
-
     public List<Card> getHand() {
         return hand;
     }
 
-
-    private Deck deck;
-
-    public void swapHandDiscard() {
-
-    }
 
 
    // public void threeOfAKind() {
