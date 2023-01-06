@@ -39,6 +39,7 @@ public class Game {
     }
 
     public int gamePlay (Player player, int hasPlayed) {
+
         int maxPlayer = players.size();
         int whoWins = (hasPlayed+1);
             if (whoWins > players.size()){
@@ -189,34 +190,12 @@ public class Game {
         }
     }
 
-    private void determineFirstPlayer() {
-        int maxScore = -1;
-        for (Player player : players) {
-            int score = player.getScore();
-            if (score > maxScore) {
-                maxScore = score;
-                currentPlayer = player;
-            }
-        }
-    }
-
-    private void playRound() {
-
-    }
-
     public Player getPlayers(int playerNumber) {
         return players.get(playerNumber);
-    }
-
-    public TrayDeck getTrayDeck() {
-        return trayDeck;
     }
 
     public Deck getDeck() {
         return deck;
     }
 
-    private void endGame() {
-
-    }
 }

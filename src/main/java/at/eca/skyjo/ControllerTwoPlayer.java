@@ -173,8 +173,6 @@ public class ControllerTwoPlayer implements Initializable {
         });
     }
 
-
-
     public void swapHandDiscard(Deck deck, Button playerButton, Player player, int cardNumber) {
         deck.swap(player, cardNumber);
         gameTwoPlayer.canPickUp = false;
@@ -265,6 +263,21 @@ public class ControllerTwoPlayer implements Initializable {
 
     }
 
+    public void buttonSetup(Player player) throws IOException {
+        if (player == player1) {
+            clickedButton(player1, 2, p1c0, 0);
+            clickedButton(player1, 2, p1c1, 1);
+            clickedButton(player1, 2, p1c2, 2);
+            clickedButton(player1, 2, p1c3, 3);
+            clickedButton(player1, 2, p1c4, 4);
+            clickedButton(player1, 2, p1c5, 5);
+            clickedButton(player1, 2, p1c6, 6);
+            clickedButton(player1, 2, p1c8, 7);
+            clickedButton(player1, 2, p1c9, 8);
+            clickedButton(player1, 2, p1c10, 9);
+            clickedButton(player1, 2, p1c11, 9);
+        }
+    }
     public void refresh(){
         deckImgFaceUp.setGraphic(deck.getDiscardCard().getCardViewImage());
 
