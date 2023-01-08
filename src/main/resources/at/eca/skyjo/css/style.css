@@ -1,26 +1,28 @@
 .root {
-    -fx-background-color: linear-gradient(to bottom right, #eebcf7,  #D9E7CB);
-    -fx-font-family: "JetBrainsMonoNL Nerd Font Mono";
+    -fx-background-color: linear-gradient(to bottom right, #dce0f7,  #d1c7d0);
+    -fx-font-family: "Roboto Mono";
     -fx-font-size: 16;
 }
 
 .button {
     -fx-padding: 10 16;
-    -fx-background-radius: 50;
-    -fx-background-color: #869de3;
+    -fx-background-radius: 5;
+    -fx-background-color: #e0e0e0;
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, .6), 5, 0.0 , 0 , 1 );
 
 }
 
 .button:hover {
     -fx-background-color: #9fb5f5;
-
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 #cardBtn {
     -fx-padding: 0;
     -fx-background-radius: 0;
     -fx-background-color: none;
+    -fx-opacity: 0.8;
 
 }
 
@@ -30,16 +32,31 @@
 }
 
 #cardBtn:hover {
-    -fx-opacity: 0.8;
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 #headingOne {
-    -fx-font-weight: bold;
-    -fx-font-size: 24;
+    -fx-font-size: 28;
+    -fx-font-width: 700;
+}
+
+#headingPlayer {
+    -fx-font-size: 18;
+    -fx-font-weight: 700;
 }
 
 #choiceBox {
     -fx-padding: 2 5;
-    -fx-background-radius: 50;
-    -fx-background-color: #6989d57D;
+    -fx-background-radius: 5;
+    -fx-background-color: #e0e0e0;;
+}
+
+#turnLabel {
+    -fx-background-color: #e0e0e0;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, .6), 5, 0.0 , 0 , 1 );
+    -fx-background-radius: 5;
+    -fx-font-size: 11px;
+
 }

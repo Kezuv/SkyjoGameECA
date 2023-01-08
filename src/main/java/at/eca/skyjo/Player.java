@@ -83,7 +83,7 @@ public class Player {
                 values = values + toCheck.getValue();
             }
         }
-        return "" + values + " Points + " + notVisible + " not visible.";
+        return "" + values + " Points + " + notVisible + " not flipped.";
     }
 
     public int startUpPoints() {
