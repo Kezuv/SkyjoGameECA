@@ -14,13 +14,11 @@ public class Card {
     private ImageView cardViewBack;
 
 
-
-    public ImageView getCardViewImage() {
-        if (isFaceUp()){
-        return cardViewImage;}
-        else {return cardViewBack;}
-    }
-
+    /**
+     * Card constructor to initialize card objects
+     *
+     * @param value the value of the card. Used to get the correct picture.
+     */
     public Card(int value) {
         this.value = value;
         faceUp = false;
@@ -32,6 +30,11 @@ public class Card {
         cardViewBack = new ImageView(cardBack);
     }
 
+    /**
+     * Card constructor to initialize card objects. Used to generate blank cards with no value.
+     *
+     * @param locked to lock blank cards.
+     */
     public Card(boolean locked) {
         this.locked = locked;
         faceUp = true;
@@ -39,23 +42,46 @@ public class Card {
         cardViewImage = new ImageView();
     }
 
+    public ImageView getCardViewImage() {
+        if (isFaceUp()){
+            return cardViewImage;}
+        else {return cardViewBack;}
+    }
+
+    /**
+     * changes the boolean attribute faceUp.
+     */
     public void flip() {
         this.faceUp = true;
     }
 
+    /**
+     * shows if the card is face up or down.
+     *
+     * @return the boolean faceUp
+     */
     public boolean isFaceUp(){
         return faceUp;
     }
+
+    /**
+     * shows the value of the card.
+     *
+     * @return the value of the card
+     */
     public int getValue() {
         return this.value;
     }
 
+    /**
+     * shows if the card is locked or not.
+     *
+     * @return the boolean locked
+     */
     public boolean isLocked() {
         return locked;
     }
 
-    public Image getCardImage() {
-        return cardImage;
-   }
+
 
 }
