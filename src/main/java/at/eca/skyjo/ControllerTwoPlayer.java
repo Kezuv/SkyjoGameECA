@@ -11,12 +11,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class ControllerTwoPlayer implements Initializable {
+
+    @FXML
+    public Button themeBtn;
+
+    @FXML
+    public AnchorPane anchorPane;
 
     @FXML
     public Button nextPlayerButton;
@@ -126,6 +133,8 @@ public class ControllerTwoPlayer implements Initializable {
 
 
 
+
+
     // ================== methoden ========================
 
     public void clickedButton (Player player, int i, Button button, int cardNumber) throws IOException {
@@ -181,6 +190,8 @@ public class ControllerTwoPlayer implements Initializable {
     }
 
     public void nextPlayer(ActionEvent actionEvent) throws IOException {
+
+
 
         if (gameTwoPlayer.movesLeft == 0) {
             switch (gameTwoPlayer.gamePlay(gameTwoPlayer.getPlayers((gameTwoPlayer.isPlaying - 1)), gameTwoPlayer.isPlaying)) {
@@ -341,6 +352,8 @@ public class ControllerTwoPlayer implements Initializable {
 
 
 
+
+
     // CardButtons Player 2
     public void player2Card0(ActionEvent event) throws IOException {
         clickedButton(player2,2,p2c0,0);
@@ -379,6 +392,8 @@ public class ControllerTwoPlayer implements Initializable {
         clickedButton(player2,2,p2c11,11);
     }
     // +++++++++++++++ END PLAYER ONE Actions ++++++++++++++++++++++++
+
+
 
 
 
@@ -451,39 +466,8 @@ public class ControllerTwoPlayer implements Initializable {
         p2c11.setGraphic(player2.getCard(11).getCardViewImage());
 
 
-        //imgRulesBtn.setGraphic(viewRulesBtn);
+        
 
-
-
-
-
-
-
-
-
-        /*
-        pOneCard00GameTwo.setOnMouseClicked(e -> {
-            if (e.getButton() == MouseButton.PRIMARY) {
-                pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
-            } else if (e.getButton() == MouseButton.SECONDARY) {
-
-                //pOneCard00GameTwo.setGraphic((Node) player1.getCard(0).getCardViewImage());
-
-                //deck.swapHandDiscard(0, deck, player1);
-
-                deck.swap(player1);
-
-                pOneCard00GameTwo.setGraphic(player1.getCard(0).getCardViewImage());
-
-                deckImgFaceUp.setGraphic((Node) deck.getDiscardPile().get(0).getCardViewImage());
-
-                deck.swap(player1);
-
-            }
-        });
-
-
-         */
 
 
 
