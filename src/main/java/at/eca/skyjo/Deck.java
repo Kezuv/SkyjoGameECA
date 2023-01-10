@@ -12,14 +12,8 @@ public class Deck {
 
     private final List<Card> discardPile = new ArrayList<>();
 
-    private List<Card> temp1 = new ArrayList<>();
-    private List<Card> temp2 = new ArrayList<>();
-
     private Image imageBack;
     private ImageView viewBackground;
-    private List<ImageView> cardBack = new ArrayList<>();
-
-
 
     public Deck() {
 
@@ -46,10 +40,6 @@ public class Deck {
         //discardPile = new ArrayList<>();
     }
 
-    public List<ImageView> getCardBack() {
-        return cardBack;
-    }
-
     public Card draw() {
         if (cards.isEmpty()) {
             return null;
@@ -60,29 +50,14 @@ public class Deck {
         return tmp;
     }
 
-
     public Card getDiscardCard() {
         return discardPile.get(0);
-    }
-
-    public List<Card> getDiscardPile() {
-        return discardPile;
-    }
-
-    public List<Card> getCards() {
-        return cards;
     }
 
     public void addOnDiscardPile(Card card){
         discardPile.add(0,card);
     }
 
-    public void printDeck() {
-        for (Card card : cards) {
-            System.out.println(card);
-        }
-    }
-    
     public ImageView getCardViewBackground() {
         if (cards.size() == 0){
             return null;
@@ -116,7 +91,6 @@ public class Deck {
         discardPile.add(0,playerCard);
 
     }
-
 
     public void addDeckToDiscardPile() {
 

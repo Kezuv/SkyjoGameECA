@@ -17,23 +17,10 @@ public class Player {
     private int score;
 
 
-    public ImageView getCardViewBackground() {
-        return cardViewBackground;
-    }
-
-    public List<ImageView> getCardBack() {
-        return cardBack;
-    }
-
     public Player(String name, Deck deck) {
         this.name = name;
         hand = new ArrayList<Card>(12);
         dealCards(deck);
-       // for (int i = 1; i <= 12; i++) {
-        //    cardBackground = new Image("/at/eca/skyjo/img/cardBackground.png");
-        //    cardViewBackground = new ImageView(cardBackground);
-        //    cardBack.add(cardViewBackground);
-        //}
         this.score = 0;
     }
 
@@ -49,9 +36,6 @@ public class Player {
         for (int i = 0; i < hand.size(); i ++){
             hand.get(i).flip();
         }
-    }
-    public void addToScore(int value) {
-        score += value;
     }
 
     public String getTotalScoreToString() {
@@ -117,26 +101,4 @@ public class Player {
         return hand;
     }
 
-
-
-   // public void threeOfAKind() {
-   //     if ((hand.get(0).getValue() == hand.get(4).getValue() && hand.get(0).getValue() == hand.get(8).getValue()) &&
-    //            (hand.get(0).isFaceUp() == hand.get(4).isFaceUp() == hand.get(8).isFaceUp())) {
-
-    //        Card replaceCard = new Card(true);
-
-
-    //    } else if ((hand.get(1).getValue() == hand.get(5).getValue() && hand.get(1).getValue() == hand.get(9).getValue()) &&
-      //          (hand.get(1).isFaceUp() == hand.get(5).isFaceUp() == hand.get(9).isFaceUp())) {
-
-
-      //      Card replaceCard = new Card(true);
-
-     //   } //else if () {
-
-        //  } else if () {
-
-        //  }
-
-    //}
 }

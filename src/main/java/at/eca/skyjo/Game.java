@@ -1,7 +1,6 @@
 package at.eca.skyjo;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
@@ -10,11 +9,11 @@ public class Game {
     private List<Player> players;
     private Deck deck;
 
-    boolean firstRound = true;
-    int isPlaying = 1;
-    int movesLeft = 2;
-    int finalround = 99;
-    boolean canPickUp = false;
+    private boolean firstRound = true;
+    private int isPlaying = 1;
+    private int movesLeft = 2;
+    private int finalround = 99;
+    private boolean canPickUp = false;
 
 
     public boolean permissionCheck (Player player, int playerID, int cardNumber){
@@ -34,7 +33,6 @@ public class Game {
         }
 
     }
-
     public int gamePlay (Player player, int hasPlayed) {
         int maxPlayer = players.size();
         // Check if FirstRound
@@ -121,7 +119,6 @@ public class Game {
         }
         return 99;
     }
-
     public int whoWonTheRound(){
         int maxScore = 500;
         int hasWonTheRound=0;
@@ -133,7 +130,6 @@ public class Game {
         }
         return hasWonTheRound;
     }
-
     public Game(int playerCount) {
         players = new ArrayList<>();
         deck = new Deck();
@@ -141,9 +137,13 @@ public class Game {
         for (int i = 1; i < (playerCount+1); i++) {
             players.add(new Player("Player " + i, this.deck));
         }
-
     }
-
+    public Game(String player1Name, String player2Name){
+        players = new ArrayList<>();
+        deck = new Deck();
+        players.add(new Player(player1Name, this.deck));
+        players.add(new Player(player2Name, this.deck));
+    }
     public void threeOfAKind(Player player){
         if (((player.getCard(0).getValue() == player.getCard(1).getValue()) && (player.getCard(0).getValue() == player.getCard(2).getValue())) &&
                 ((player.getCard(0).isFaceUp() == player.getCard(1).isFaceUp()) && (player.getCard(0).isFaceUp() == player.getCard(2).isFaceUp()))){
@@ -200,19 +200,15 @@ public class Game {
             }
         }
     }
-
     public Player getPlayers(int playerNumber) {
         return players.get(playerNumber);
     }
-
     public Deck getDeck() {
         return deck;
     }
-
     public String whoIsPlayingText(){
         return "It is "+players.get(isPlaying-1).getName()+"'s turn!";
     }
-
     public String instructionLabelText(){
         if (firstRound){
                 return "" + players.get(isPlaying - 1).getName() + " have to reveal two cards.\n" +
@@ -305,5 +301,23 @@ public class Game {
         }
 
             return "Failure by instructionLabelText - Game Class!";
+    }
+    public boolean isFirstRound() {
+        return firstRound;
+    }
+    public int getIsPlaying() {
+        return isPlaying;
+    }
+    public int getMovesLeft() {
+        return movesLeft;
+    }
+    public void setMovesLeft(int movesLeft) {
+        this.movesLeft = movesLeft;
+    }
+    public boolean isCanPickUp() {
+        return canPickUp;
+    }
+    public void setCanPickUp(boolean canPickUp) {
+        this.canPickUp = canPickUp;
     }
 }
